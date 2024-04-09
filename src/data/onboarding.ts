@@ -9,7 +9,7 @@ export interface onBoardingInterface {
     backgroundColor: string;
 }
 
-const onBoardingData: onBoardingInterface[] = [
+const OnBoardingData: onBoardingInterface[] = [
     {
         id: 1,
         animation: require('../assets/animations/animation1.json'),
@@ -27,10 +27,10 @@ const onBoardingData: onBoardingInterface[] = [
     {
         id: 3,
         animation: require('../assets/animations/animation3.json'),
-        text: 'This is the third screen',
+        text: 'This is the third \nscreen',
         textColor: Colors.GREEN,
         backgroundColor: Colors.WHITE,
     },
 ];
 
-export default onBoardingData;
+export default OnBoardingData;

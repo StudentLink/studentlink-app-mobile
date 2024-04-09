@@ -1,11 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, View } from 'react-native';
+import onBoardingData from './src/data/onboarding';
+import RenderItem from './src/components/RenderItem';
+import Animated from 'react-native-reanimated';
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Animated.FlatList 
+        data={onBoardingData} 
+        renderItem={({ item, index }) => {
+          return <RenderItem item={item} index={index}/>;
+      }}
+      keyExtractor={item => item.id}
+      scrollEventThrottle={16}
+      horizontal={true}
+      bounces={false}
+      pagingEnabled={true}
+      showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 }
@@ -18,3 +30,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
