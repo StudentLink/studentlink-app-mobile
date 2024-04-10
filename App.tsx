@@ -4,6 +4,7 @@ import RenderItem from './src/components/RenderItem';
 import Animated, { useAnimatedRef, useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { FlatList } from 'react-native-reanimated/lib/typescript/Animated';
 import Pagination from './src/components/pagination/Pagination';
+import CustomButton from './src/components/CustomButton';
 
 const App = () => {
   const flatListRef = useAnimatedRef<FlatList<onBoardingInterface>>();
@@ -50,6 +51,12 @@ const App = () => {
       />
       <View style={styles.bottomContainer}>
         <Pagination data={onBoardingData} x={x} />
+        <CustomButton
+        flatListRef={flatListRef}
+        flatListIndex={flatListIndex}
+        datalength={onBoardingData.length}
+        x={x}
+        />
       </View>
     </View>
   );
@@ -69,6 +76,9 @@ const styles = StyleSheet.create({
     right: 0,
     marginHorizontal: 30,
     paddingVertical: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   }
 });
 
