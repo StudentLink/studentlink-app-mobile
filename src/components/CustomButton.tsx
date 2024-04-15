@@ -62,6 +62,16 @@ const CustomButton = ({ flatListRef, flatListIndex, datalength, x }: Props) => {
         };
     });
 
+    const AnimatedIcon = Animated.createAnimatedComponent(Ionicons);
+
+    const AnimatedIonicons = useAnimatedStyle(() => {
+        let color = interpolateColor(
+            x.value,
+            [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
+            [Colors.WHITE, Colors.BLUE, Colors.WHITE]
+        );
+        return { color };
+    });
 
     return (
         <TouchableWithoutFeedback
@@ -75,7 +85,7 @@ const CustomButton = ({ flatListRef, flatListIndex, datalength, x }: Props) => {
         >
             <Animated.View style={[styles.container, animatedColor, buttonAnimationStyle]}>
                 <Animated.Text style={[styles.textButton, textAnimationStyle]}>Get Started</Animated.Text>
-                <Animated.Image source={require('../assets/images/ArrowIcon.png')} style={[styles.arrow, arrowAnimationStyle]} />
+                <AnimatedIcon name="arrow-forward" size={30} style={[styles.arrow, arrowAnimationStyle, AnimatedIonicons]} />
             </Animated.View>
         </TouchableWithoutFeedback>
     )
@@ -95,13 +105,13 @@ const styles = StyleSheet.create({
         height: 60,
     },
     arrow: {
-        position: 'absolute',
         width: 30,
         height: 30,
     },
     textButton: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 20,
         position: 'absolute',
+        fontWeight: '800',
     }
 })

@@ -3,5 +3,7 @@ export const Colors = {
     GREEN: '#9cfa19',
     PINK: '#ff0066',
     ORANGE: '#ffde00',
-    WHITE: '#E7E7E7'
-}
+    WHITE: '#E7E7E7',
+    DARKEN_BLUE: '#0c1920',
+    DARK_BLUE : '#17313f'
+};

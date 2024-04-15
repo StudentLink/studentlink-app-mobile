@@ -13,23 +13,23 @@ const OnBoardingData: onBoardingInterface[] = [
     {
         id: 1,
         animation: require('../assets/animations/animation1.json'),
-        text: 'Welcome to the App',
+        text: 'Bienvenue sur\nStudentLink !',
         textColor: Colors.BLUE,
-        backgroundColor: Colors.WHITE,
+        backgroundColor: Colors.DARKEN_BLUE,
     },
     {
         id: 2,
         animation: require('../assets/animations/animation2.json'),
-        text: 'This is the second screen',
+        text: 'Le réseau social\npour les étudiants',
         textColor: Colors.WHITE,
         backgroundColor: Colors.BLUE,
     },
     {
         id: 3,
         animation: require('../assets/animations/animation3.json'),
-        text: 'This is the third \nscreen',
+        text: 'Trouve des amis,\ndes groupes et des événements',
         textColor: Colors.BLUE,
-        backgroundColor: Colors.WHITE,
+        backgroundColor: Colors.DARKEN_BLUE,
     },
 ];
 
