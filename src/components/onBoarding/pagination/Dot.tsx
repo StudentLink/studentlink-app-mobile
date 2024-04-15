@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React from 'react'
 import Animated, { Extrapolation, SharedValue, interpolate, interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
-import { Colors } from '../../utils/colors';
+import { Colors } from '../../../utils/colors';
 
 type Props = {
     index: number;
     x: SharedValue<number>;
 }
 
-const Dot = ({index, x}: Props) => {
+const Dot = ({ index, x }: Props) => {
 
-    const {width : SCREEN_WIDTH} = useWindowDimensions();
+    const { width: SCREEN_WIDTH } = useWindowDimensions();
 
     const animatedDotStyle = useAnimatedStyle(() => {
         const widthAnimation = interpolate(
@@ -42,16 +42,16 @@ const Dot = ({index, x}: Props) => {
     const animatedColor = useAnimatedStyle(() => {
         const backgroundColor = interpolateColor(
             x.value,
-            [0, SCREEN_WIDTH, 2* SCREEN_WIDTH],
+            [0, SCREEN_WIDTH, 2 * SCREEN_WIDTH],
             [Colors.BLUE, Colors.WHITE, Colors.BLUE]
         );
         return {
             backgroundColor: backgroundColor
         }
     });
-  return (
-    <Animated.View style={[styles.dot, animatedDotStyle, animatedColor]}/>
-  )
+    return (
+        <Animated.View style={[styles.dot, animatedDotStyle, animatedColor]} />
+    )
 }
 
 export default Dot
