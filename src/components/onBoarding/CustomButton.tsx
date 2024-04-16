@@ -4,15 +4,19 @@ import Animated, { AnimatedRef, SharedValue, interpolateColor, useAnimatedStyle,
 import { onBoardingInterface } from '../../data/onboarding';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../utils/colors';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
     flatListRef: AnimatedRef<FlatList<onBoardingInterface>>;
     flatListIndex: SharedValue<number>;
     datalength: number;
     x: SharedValue<number>;
+    navigate : string;
 }
 
-const CustomButton = ({ flatListRef, flatListIndex, datalength, x }: Props) => {
+const CustomButton = ({ flatListRef, flatListIndex, datalength, x, navigate}: Props) => {
+    const navigation = useNavigation();
+
     const { width: SCREEN_WIDTH } = useWindowDimensions();
 
     const buttonAnimationStyle = useAnimatedStyle(() => {
@@ -72,14 +76,14 @@ const CustomButton = ({ flatListRef, flatListIndex, datalength, x }: Props) => {
         );
         return { color };
     });
-
     return (
         <TouchableWithoutFeedback
             onPress={() => {
                 if (flatListIndex.value < datalength - 1) {
                     flatListRef.current?.scrollToIndex({ index: flatListIndex.value + 1 });
                 } else {
-                    console.log('End of the onboarding');
+                    navigation.navigate(navigate);
+
                 }
             }}
         >

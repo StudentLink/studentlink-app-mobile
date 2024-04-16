@@ -56,6 +56,7 @@ const OnBoarding = () => {
             flatListIndex={flatListIndex}
             datalength={onBoardingData.length}
             x={x}
+            navigate='RegisterName'
           />
         </View>
       </View>
