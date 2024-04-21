@@ -6,16 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 type Props = {
     label: string;
     onClick : () => void;
-    navigate : string;
 }
 
-const ButtonShadow = ({ label, navigate, onClick}: Props) => {
+const ButtonShadow = ({ label, onClick}: Props) => {
     const navigation = useNavigation();
     return (
         <TouchableWithoutFeedback 
         onPress={() => {
             onClick();
-            navigation.navigate(navigate)
         }}>
             <View style={styles.container}>
                 <Text style={styles.label}>{label}</Text>

@@ -5,7 +5,8 @@ import OnBoarding from './src/screens/OnBoarding';
 import RegisterName from './src/screens/RegisterName';
 import { store } from './src/data/store';
 import { Provider } from 'react-redux';
-import RegisterUsername from './src/screens/RegisterUsername';
+import RegisterSchoolAndLocalization from './src/screens/RegisterSchoolAndLocalization';
+import RegisterPasswordAndEmail from './src/screens/RegisterPasswordAndEmail';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +18,8 @@ const App = () => {
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='OnBoarding'>
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
             <Stack.Screen name="RegisterName" component={RegisterName} />
-            <Stack.Screen name="RegisterUsername" component={RegisterUsername} />
-
+            <Stack.Screen name="RegisterPasswordAndEmail" component={RegisterPasswordAndEmail} />
+            <Stack.Screen name="RegisterSchoolAndLocalization" component={RegisterSchoolAndLocalization} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

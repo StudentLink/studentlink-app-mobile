@@ -15,6 +15,8 @@ const CustomInput = ({ label, onChange }: Props) => {
                 placeholder={label}
                 placeholderTextColor={Colors.BLUE}
                 onChangeText={onChange}
+                contextMenuHidden={true}
+                secureTextEntry={label === 'Password' || label === 'Confirm password'}
             />
         </View>
     )
