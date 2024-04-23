@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ButtonShadow from '../components/ButtonShadow';
 import { updateUser } from '../data/reducer/userReducer';
@@ -7,24 +7,48 @@ import { Constant } from '../utils/constant';
 import { Colors } from '../utils/colors';
 import citiesData from '../data/cities.json'
 import { CapitalizeData } from '../utils/verification';
-import MultiSelectInput from '../components/MultiSelectInput';
+import MultiSelectInput from '../components/selectInput/MultiSelectInput';
+import SingleSelectInput from '../components/selectInput/singleSelectInput';
+import { SchoolType } from '../types/Schooltype';
 
 const RegisterSchoolAndLocalization = () => {
 
     const [data, setData] = useState<string[]>([""]);
+    const [school, setSchool] = useState<{ label: string, value: string }[]>([{ label: "", value: "" }]);
+    const [schoolData, setSchoolData] = useState<{ label: string, value: string }>({ label: "", value: "" });
 
     const dispatch = useDispatch();
 
-    const handleData = (items: Array<string>) => {
+    const handleMultipleData = (items: Array<string>) => {
         setData(items);
     }
+
+    const handleSingleData = (item: { label: string, value: string }) => {
+        setSchoolData(item);
+    }
+
+    const getSchoolData = async () => {
+        try {
+            const response = await fetch('https://studentlink.etudiants.ynov-bordeaux.com/api/schools')
+            const json = await response.json();
+            setSchool(json.map((school: SchoolType) => ({ label: school.name, value: school.id })))
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getSchoolData();
+    }, []);
+
 
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Tu viens</Text>
             <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>d'où ?</Text>
+            <SingleSelectInput data={school} onChange={handleSingleData} />
             <MultiSelectInput
-                onChange={handleData}
+                onChange={handleMultipleData}
                 data={citiesData.map(city => (
                     {
                         label: `${city.zip_code} - ${CapitalizeData(city.label)}`
@@ -35,7 +59,7 @@ const RegisterSchoolAndLocalization = () => {
             <ButtonShadow
                 label='Suivant'
                 onClick={() => {
-                    dispatch(updateUser({ localisations: data }));
+                    dispatch(updateUser({ localisations: data, schoolId: schoolData.value }));
                 }} />
         </View>
     )

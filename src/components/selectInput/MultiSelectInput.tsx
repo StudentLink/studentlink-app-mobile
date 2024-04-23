@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { Colors } from '../utils/colors'
+import { Colors } from '../../utils/colors'
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { MultiSelect } from 'react-native-element-dropdown';
 
@@ -37,7 +37,6 @@ const MultiSelectInput = ({ data, onChange }: Props) => {
                 activeColor={Colors.BLUE}
                 searchPlaceholder="Search..."
                 onChange={items => {
-                    console.log('onchange', items);
                     onChange(items);
                     setSelected(items);
                 }}
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.BLUE,
         borderWidth: 2,
         padding: 12,
-        shadowColor: '#000',
+        shadowColor: Colors.DARK_BLUE,
         shadowOffset: {
             width: 0,
             height: 1,
