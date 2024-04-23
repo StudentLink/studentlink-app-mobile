@@ -1,32 +1,41 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import CustomInput from '../components/CustomInput';
+import { useDispatch } from 'react-redux'
 import ButtonShadow from '../components/ButtonShadow';
 import { updateUser } from '../data/reducer/userReducer';
 import { Constant } from '../utils/constant';
 import { Colors } from '../utils/colors';
-import SelectInput from '../components/SelectInput';
+import citiesData from '../data/cities.json'
+import { CapitalizeData } from '../utils/verification';
+import MultiSelectInput from '../components/MultiSelectInput';
 
-type Props = {}
+const RegisterSchoolAndLocalization = () => {
 
-const RegisterSchoolAndLocalization = (props: Props) => {
-    const name = useSelector((state: any) => state.user.name)
-    console.log(name)
+    const [data, setData] = useState<string[]>([""]);
 
     const dispatch = useDispatch();
 
-    const [username, setUsername] = useState('');
+    const handleData = (items: Array<string>) => {
+        setData(items);
+    }
 
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Tu viens</Text>
-            <Text style={[styles.text, { color : Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>d'où ?</Text>
-            <SelectInput/>
+            <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>d'où ?</Text>
+            <MultiSelectInput
+                onChange={handleData}
+                data={citiesData.map(city => (
+                    {
+                        label: `${city.zip_code} - ${CapitalizeData(city.label)}`
+                        , value: parseInt(city.insee_code)
+                    }
+                ))}
+            />
             <ButtonShadow
                 label='Suivant'
                 onClick={() => {
-                    dispatch(updateUser({ username: username}))
+                    dispatch(updateUser({ localisations: data }));
                 }} />
         </View>
     )

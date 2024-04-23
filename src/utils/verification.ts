@@ -12,3 +12,8 @@ export const ValidateEmail = (email: string) => {
   }
   return false;
 };
+
+
+export const CapitalizeData = (data: string) => {
+  return data.split(' ').map(y => `${y[0].toUpperCase()}${y.slice(1)}`).join(' ')
+}

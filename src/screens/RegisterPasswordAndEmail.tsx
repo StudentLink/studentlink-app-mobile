@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Colors } from '../utils/colors';
 import { Constant } from '../utils/constant';
 import { updateUser } from '../data/reducer/userReducer';
@@ -21,7 +21,7 @@ const RegisterPasswordAndEmail = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Sécurisons ton</Text>
-            <Text style={[styles.text, { color : Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>compte !</Text>
+            <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>compte !</Text>
             <CustomInput label='Email' onChange={setEmail} />
             <CustomInput label='Password' onChange={setPassword} />
             <CustomInput label='Confirm password' onChange={setConfirmPassword} />
@@ -29,19 +29,19 @@ const RegisterPasswordAndEmail = () => {
                 label='Suivant'
                 onClick={() => {
                     if (ValidateEmail(email)) {
-                        dispatch(updateUser({ email: email}))
+                        dispatch(updateUser({ email: email }))
                     } else {
                         alert('Email invalide !')
                         return;
                     }
-                    if(ValidatePassword(password, confirmPassword)) {
-                        dispatch(updateUser({ password: password})),
-                        navigation.navigate('RegisterSchoolAndLocalization')
+                    if (ValidatePassword(password, confirmPassword)) {
+                        dispatch(updateUser({ password: password })),
+                            navigation.navigate('RegisterSchoolAndLocalization')
                     } else {
                         alert('Les mots de passe ne correspondent pas !')
                     }
                 }}
-                />
+            />
         </View>
     )
 };
