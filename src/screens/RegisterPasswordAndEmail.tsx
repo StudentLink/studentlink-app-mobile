@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Colors } from '../utils/colors';
 import { Constant } from '../utils/constant';
 import { updateUser } from '../data/reducer/userReducer';
@@ -13,10 +13,39 @@ const RegisterPasswordAndEmail = () => {
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    const user = useSelector((state: any) => state.user);
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
+
+    const registerUser = async () => {
+        try {
+            const response = await fetch('https://studentlink.etudiants.ynov-bordeaux.com/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    displayname: user.name,
+                    username: user.username,
+                    email: user.email,
+                    password: user.password,
+                    role: 'ROLE_USER',
+                })
+            });
+            const json = await response.json();
+            console.log(JSON.stringify(json));
+        } catch (error) {
+            alert('Erreur lors de l\'inscription');
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        console.log(user)
+        registerUser();
+    }, [user]);
 
     return (
         <View style={styles.container}>
@@ -29,14 +58,14 @@ const RegisterPasswordAndEmail = () => {
                 label='Suivant'
                 onClick={() => {
                     if (ValidateEmail(email)) {
-                        dispatch(updateUser({ email: email }))
+                        dispatch(updateUser({ email: email.toLowerCase() }));
                     } else {
-                        alert('Email invalide !')
+                        alert('Email invalide !');
                         return;
                     }
                     if (ValidatePassword(password, confirmPassword)) {
-                        dispatch(updateUser({ password: password })),
-                            navigation.navigate('RegisterSchoolAndLocalization')
+                        dispatch(updateUser({ password: password }));
+                        navigation.navigate('RegisterSchoolAndLocalization');
                     } else {
                         alert('Les mots de passe ne correspondent pas !')
                     }
