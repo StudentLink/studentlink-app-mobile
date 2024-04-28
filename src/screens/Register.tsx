@@ -1,23 +1,28 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Colors } from '../utils/colors';
 import { Constant } from '../utils/constant';
-import { updateUser } from '../data/reducer/userReducer';
-import ButtonShadow from '../components/ButtonShadow';
 import CustomInput from '../components/CustomInput';
-import { ValidateEmail, ValidatePassword } from '../utils/verification';
+import ButtonShadow from '../components/ButtonShadow';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../data/reducer/userReducer';
+import { Colors } from '../utils/colors';
+import { CapitalizeData, ValidateDataRegister } from '../utils/verification';
+import * as SecureStore from 'expo-secure-store'
 
-const RegisterPasswordAndEmail = () => {
-
+const Register = () => {
     const navigation = useNavigation();
+
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user);
 
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
+
 
     const registerUser = async () => {
         try {
@@ -35,42 +40,37 @@ const RegisterPasswordAndEmail = () => {
                 })
             });
             const json = await response.json();
-            console.log(JSON.stringify(json));
+            await SecureStore.setItemAsync('token', json.token);
+            if (json.message) {
+                alert(json.message);
+                return;
+            }
+            navigation.navigate('HomePage');
         } catch (error) {
-            alert('Erreur lors de l\'inscription');
             console.error(error);
         }
     }
 
     useEffect(() => {
-        console.log(user)
-        registerUser();
+        if (ValidateDataRegister(firstname, lastname, username, email, password, confirmPassword)) {
+            registerUser();
+        }
     }, [user]);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Sécurisons ton</Text>
-            <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>compte !</Text>
-            <CustomInput label='Email' onChange={setEmail} />
-            <CustomInput label='Password' onChange={setPassword} />
-            <CustomInput label='Confirm password' onChange={setConfirmPassword} />
+            <Text style={styles.title}>Create Account</Text>
+            <CustomInput label='Prénom' onChange={setFirstname} icon='person-outline' />
+            <CustomInput label='Nom' onChange={setLastname} icon='person-outline' />
+            <CustomInput label='Pseudonyme' onChange={setUsername} icon='person-outline' />
+            <CustomInput label='Email' onChange={setEmail} icon='at' />
+            <CustomInput label='Password' onChange={setPassword} icon='lock-closed-outline' />
+            <CustomInput label='Confirm password' onChange={setConfirmPassword} icon='lock-closed-outline' />
             <ButtonShadow
                 label='Suivant'
                 onClick={() => {
-                    if (ValidateEmail(email)) {
-                        dispatch(updateUser({ email: email.toLowerCase() }));
-                    } else {
-                        alert('Email invalide !');
-                        return;
-                    }
-                    if (ValidatePassword(password, confirmPassword)) {
-                        dispatch(updateUser({ password: password }));
-                        navigation.navigate('RegisterSchoolAndLocalization');
-                    } else {
-                        alert('Les mots de passe ne correspondent pas !')
-                    }
-                }}
-            />
+                    dispatch(updateUser({ name: `${CapitalizeData(firstname)} ${lastname.toUpperCase()}`, username: username, email: email, password: password }))
+                }} />
         </View>
     )
 };
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
-    text: {
-        color: Colors.WHITE,
+    title: {
+        color: Colors.BLUE,
         fontWeight: '900',
         fontSize: Constant.TITLE_SIZE,
         textAlign: 'center',
+        marginBottom: Constant.MARGIN_BOTTOM_TITLE,
     },
     subtitle: {
         color: Colors.WHITE,
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RegisterPasswordAndEmail
+export default Register;

@@ -10,8 +10,9 @@ import { CapitalizeData } from '../utils/verification';
 import MultiSelectInput from '../components/selectInput/MultiSelectInput';
 import SingleSelectInput from '../components/selectInput/singleSelectInput';
 import { SchoolType } from '../types/Schooltype';
+import * as SecureStore from 'expo-secure-store'
 
-const RegisterSchoolAndLocalization = () => {
+const RegisterSchoolAndLocalization = async () => {
 
     const [data, setData] = useState<string[]>([""]);
     const [school, setSchool] = useState<{ label: string, value: string }[]>([{ label: "", value: "" }]);
