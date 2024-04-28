@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import RegisterSchoolAndLocalization from './src/screens/RegisterSchoolAndLocalization';
 import Register from './src/screens/Register';
 import HomePage from './src/screens/HomePage';
+import Authentication from './src/screens/Authentication';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const App = () => {
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name='HomePage' component={HomePage} />
+            <Stack.Screen name="Authentication" component={Authentication} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

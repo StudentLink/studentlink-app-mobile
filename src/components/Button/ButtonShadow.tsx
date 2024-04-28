@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React from 'react'
-import { Colors } from '../utils/colors'
+import { Colors } from '../../utils/colors'
 import { useNavigation } from '@react-navigation/native';
-import { Constant } from '../utils/constant';
+import { Constant } from '../../utils/constant';
 
 type Props = {
     label: string;
@@ -27,9 +27,10 @@ export default ButtonShadow
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center',
         marginTop: Constant.MARGIN_BOTTOM_SUBTITLE,
         backgroundColor: Colors.BLUE,
-        paddingHorizontal: 120,
+        width: 325,
         paddingVertical: 15,
         shadowColor: Colors.DARK_BLUE,
         shadowOffset: {width : 0, height: 5},

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Constant } from '../utils/constant';
 import CustomInput from '../components/CustomInput';
-import ButtonShadow from '../components/ButtonShadow';
+import ButtonShadow from '../components/Button/ButtonShadow';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../data/reducer/userReducer';

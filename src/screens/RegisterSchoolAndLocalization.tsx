@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import ButtonShadow from '../components/ButtonShadow';
+import ButtonShadow from '../components/Button/ButtonShadow';
 import { updateUser } from '../data/reducer/userReducer';
 import { Constant } from '../utils/constant';
 import { Colors } from '../utils/colors';
