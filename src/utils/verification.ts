@@ -35,3 +35,12 @@ export const ValidateDataRegister = (
   }
   return false;
 };
+
+export const ValidateDataLogin = (email: string, password: string) => {
+  if (email && password) {
+    if (ValidateEmail(email)) {
+      return true;
+    }
+  }
+  return false;
+};

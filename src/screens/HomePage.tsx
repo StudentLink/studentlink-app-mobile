@@ -1,8 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
 
-const HomePage = async () => {
+const HomePage = () => {
+    const [token, setToken] = useState<string | null>(null);
+
+    const getToken = async () => {
+        setToken(await SecureStore.getItemAsync('token'));
+    };
+
+    useEffect(() => {
+        getToken();
+    }, []);
+
 
 
     return (

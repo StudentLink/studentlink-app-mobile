@@ -40,11 +40,11 @@ const Register = () => {
                 })
             });
             const json = await response.json();
-            await SecureStore.setItemAsync('token', json.token);
             if (json.message) {
                 alert(json.message);
                 return;
             }
+            await SecureStore.setItemAsync('token', json.token);
             navigation.navigate('HomePage');
         } catch (error) {
             console.error(error);
