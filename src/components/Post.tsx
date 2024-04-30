@@ -4,16 +4,16 @@ import { Colors } from '../utils/colors'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type Props = {
-  label: string,
+  content: string,
   name: string,
   username: string,
   profilePicture: string;
-  school?: string;
+  school: string | number;
   comments: Array<string>;
   date: string;
 }
 
-const Post = ({ label, name, username, profilePicture, school, comments, date }: Props) => {
+const Post = ({ content, name, username, profilePicture, school, comments, date }: Props) => {
   return (
     <>
       <View style={styles.container}>
@@ -29,7 +29,7 @@ const Post = ({ label, name, username, profilePicture, school, comments, date }:
         </View>
         <View style={{ flex: 1, height: 1, backgroundColor: Colors.WHITE, marginVertical: 15, opacity: 0.1 }} />
         <TouchableOpacity onPress={() => { console.log("HOLA NINO") }}>
-          <Text style={styles.content}>{label}</Text>
+          <Text style={styles.content}>{content}</Text>
           <View style={styles.footer}>
             <Text style={styles.comment}>{(comments.length == 0) ? "Ajouter un commentaire" : `${comments.length} commentaire${comments.length > 1 ?? 's'}`}</Text>
             <Text style={styles.comment}>{date}</Text>

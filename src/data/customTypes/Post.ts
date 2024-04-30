@@ -8,6 +8,7 @@ type Post = {
     locations: number[] | string[] | null;
     user: User;
     createdAt: string;
+    location: string;
     comments : Array<string>;
 };
 

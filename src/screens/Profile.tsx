@@ -10,6 +10,9 @@ import User from '../data/customTypes/User';
 import PostType from '../data/customTypes/Post';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { formatDate } from '../data/FormatDate';
+import cities from '../data/cities.json';
+import City from '../data/customTypes/City';
+import { CapitalizeData } from '../utils/verification';
 
 
 const Profile = () => {
@@ -17,6 +20,7 @@ const Profile = () => {
     const [user, setUser] = useState<User | null>(null);
     const [profilePicture, setProfilePicture] = useState('');
     const [posts, setPosts] = useState<PostType[]>([]);
+    const [locations, setLocations] = useState<string[]>([]);
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
@@ -41,6 +45,7 @@ const Profile = () => {
                 },
             });
             const json = await response.json();
+            console.log("User", json);
             setUser(json);
             if (user) {
                 getProfilePicture();
@@ -73,11 +78,30 @@ const Profile = () => {
                 },
             });
             const json = await response.json();
-            console.log(json);
+            console.log("Posts", json);
             setPosts(json);
         } catch (error) {
             console.error(error)
         }
+    }
+
+    const getLocations = async () => {
+        if (user) {
+            if (user.locations && user.locations.length > 0) {
+                const data = user.locations.map(x => {
+                    const city = (cities as City[]).find(y => {
+                        return y.insee_code == `${x}`;
+                    });
+                    if (city) {
+                        return CapitalizeData(city.label);
+                    } 
+                    return 'N/A';
+                });
+                setLocations(data);
+                ;
+            }
+        }
+        
     }
 
     useEffect(() => {
@@ -88,6 +112,7 @@ const Profile = () => {
     useEffect(() => {
         if (user) {
             getProfilePicture();
+            getLocations();
         }
     }, [user]);
 
@@ -99,19 +124,20 @@ const Profile = () => {
                 <Text style={styles.username}>@{user.username}</Text>
                 <View style={styles.innerContainer}>
                     <Text style={styles.data}>Email : {user.email}</Text>
-                    <Text style={styles.data}>Locations : {user.locations.join(" / ")}</Text>
-                    <Text style={styles.data}>School : {user.school.name}</Text>
+                    <Text style={styles.data}>Localisations suivis : {locations}</Text>
+                    <Text style={styles.data}>École : {user.school.name}</Text>
                 </View>
                 <ScrollView style={styles.scroll}>
                     {
-                        posts.map((post) => {
+                        posts.map((post, key) => {
                             return (
                                 <Post
+                                    key={key}
                                     name={user.name}
                                     username={user.username}
                                     profilePicture={profilePicture}
                                     school={user.school.name}
-                                    label={post.content} 
+                                    content={post.content} 
                                     comments={post.comments}
                                     date={formatDate(post.createdAt)}
                                     />
