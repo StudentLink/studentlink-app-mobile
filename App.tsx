@@ -9,6 +9,7 @@ import Register from './src/screens/Register';
 import HomePage from './src/screens/HomePage';
 import Authentication from './src/screens/Authentication';
 import Login from './src/screens/Login';
+import Profile from './src/screens/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const App = () => {
             <Stack.Screen name='HomePage' component={HomePage} />
             <Stack.Screen name="Authentication" component={Authentication} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Profile" component={Profile} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

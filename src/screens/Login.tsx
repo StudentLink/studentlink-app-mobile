@@ -34,7 +34,7 @@ const Login = () => {
                 return;
             }
             await SecureStore.setItemAsync('token', json.token);
-            navigation.navigate('HomePage');
+            navigation.navigate('Profile');
         } catch (error) {
             console.error(error);
         }
