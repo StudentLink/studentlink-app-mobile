@@ -8,7 +8,7 @@ type Props = {
   name: string,
   username: string,
   profilePicture: string;
-  school?: string;
+  school: string;
   comments: Array<string>;
   date: string;
 }
