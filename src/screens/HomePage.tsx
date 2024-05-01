@@ -14,15 +14,7 @@ import Profile from './Profile';
 
 const HomePage = () => {
 
-    const [profilePicture, setProfilePicture] = useState('');
     const [posts, setPosts] = useState<PostType[]>([]);
-
-    const getProfilePicture = async (name: string) => {
-        const pictureRequest = await fetch(`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${name.replaceAll(/[ -'_]+/g, '+')}`);
-        const blob = await pictureRequest.blob();
-        const picture = URL.createObjectURL(blob);
-        setProfilePicture(picture);
-    }
 
     const getPosts = async () => {
         try {
@@ -35,14 +27,12 @@ const HomePage = () => {
             });
             const json = await response.json();
             setPosts(json);
-            console.log(json);
         } catch (error) {
             console.error(error)
         }
     }
 
     useEffect(() => {
-        console.log("Hello there !")
         getPosts();
     }, []);
 
@@ -51,7 +41,6 @@ const HomePage = () => {
             <ScrollView>
                 {
                     posts.map((post, index) => {
-                        getProfilePicture(post.user.name);
                         return (
                             <Post
                                 key={index}
@@ -61,7 +50,7 @@ const HomePage = () => {
                                 school="School name"
                                 comments={post.comments}
                                 date={formatDate(post.createdAt)}
-                                profilePicture={profilePicture}
+                                profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
                             />
                         )
                     })
