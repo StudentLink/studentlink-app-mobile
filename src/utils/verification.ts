@@ -44,3 +44,16 @@ export const ValidateDataLogin = (email: string, password: string) => {
   }
   return false;
 };
+
+export const ValidateDataSchoolAndLocalization = (
+  localisations: string[],
+  schoolId: string
+) => {
+  if (localisations.length == 0) {
+    return alert("Veuillez choisir au moins une ville");
+  }
+  if (schoolId == "") {
+    return alert("Veuillez choisir votre école");
+  }
+  return true;
+};

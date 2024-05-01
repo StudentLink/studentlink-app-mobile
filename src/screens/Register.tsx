@@ -13,9 +13,6 @@ import * as SecureStore from 'expo-secure-store'
 const Register = () => {
     const navigation = useNavigation();
 
-    const dispatch = useDispatch();
-    const user = useSelector((state: any) => state.user);
-
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [username, setUsername] = useState('');
@@ -32,10 +29,10 @@ const Register = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    displayname: user.name,
-                    username: user.username,
-                    email: user.email,
-                    password: user.password,
+                    name: `${CapitalizeData(firstname)} ${lastname.toUpperCase()}`,
+                    username: username,
+                    email: email,
+                    password: password,
                     role: 'ROLE_USER',
                 })
             });
@@ -45,17 +42,11 @@ const Register = () => {
                 return;
             }
             await SecureStore.setItemAsync('token', json.token);
-            navigation.navigate('HomePage');
+            navigation.navigate('RegisterSchoolAndLocalization');
         } catch (error) {
             console.error(error);
         }
     }
-
-    useEffect(() => {
-        if (ValidateDataRegister(firstname, lastname, username, email, password, confirmPassword)) {
-            registerUser();
-        }
-    }, [user]);
 
     return (
         <View style={styles.container}>
@@ -69,7 +60,9 @@ const Register = () => {
             <ButtonShadow
                 label='Suivant'
                 onClick={() => {
-                    dispatch(updateUser({ name: `${CapitalizeData(firstname)} ${lastname.toUpperCase()}`, username: username, email: email, password: password }))
+                    if (ValidateDataRegister(firstname, lastname, username, email, password, confirmPassword)) {
+                        registerUser();
+                    }
                 }} />
         </View>
     )

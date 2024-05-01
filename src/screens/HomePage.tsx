@@ -35,14 +35,12 @@ const HomePage = () => {
             });
             const json = await response.json();
             setPosts(json);
-            console.log(json);
         } catch (error) {
             console.error(error)
         }
     }
 
     useEffect(() => {
-        console.log("Hello there !")
         getPosts();
     }, []);
 

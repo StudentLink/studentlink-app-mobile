@@ -1,4 +1,4 @@
 export type SchoolType = {
-    id : string;
+    id : number;
     name : string
 }
