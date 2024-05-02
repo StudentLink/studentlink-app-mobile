@@ -5,7 +5,7 @@ type Post = {
     id: number;
     content: string;
     school: School | null;
-    locations: number[] | string[] | null;
+    location: number
     user: User;
     createdAt: string;
     location: string;

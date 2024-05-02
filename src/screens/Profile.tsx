@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View, Image, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import * as SecureStore from 'expo-secure-store'
-import { JwtPayload, jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import "core-js/stable/atob";
 import { Colors } from '../utils/colors';
 import Post from '../components/Post';
@@ -10,9 +9,10 @@ import User from '../data/customTypes/User';
 import PostType from '../data/customTypes/Post';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { formatDate } from '../data/FormatDate';
-import cities from '../data/cities.json';
+import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
+
 
 
 const Profile = () => {
@@ -88,19 +88,26 @@ const Profile = () => {
         if (user) {
             if (user.locations && user.locations.length > 0) {
                 const data = user.locations.map(x => {
-                    const city = (cities as City[]).find(y => {
+                    const city = (CityJson as City[]).find(y => {
                         return y.insee_code == `${x}`;
                     });
                     if (city) {
                         return CapitalizeData(city.label);
-                    } 
+                    }
                     return 'N/A';
                 });
                 setLocations(data);
                 ;
             }
         }
-        
+    }
+
+    const getLocalisationName = (inseeCode: number) => {
+        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
+        if (result) {
+            return CapitalizeData(result.label);
+        }
+        return 'N/A';
     }
 
     useEffect(() => {
@@ -135,12 +142,12 @@ const Profile = () => {
                                     name={user.name}
                                     username={user.username}
                                     profilePicture={profilePicture}
-                                    school={user.school.name}
-                                    content={post.content} 
+                                    schoolOrLocation={post.school ? post.school.name : getLocalisationName(post.location)}
+                                    content={post.content}
                                     comments={post.comments}
                                     date={formatDate(post.createdAt)}
-                                    />
-                                    
+                                />
+
                             );
                         })
                     }
@@ -155,7 +162,6 @@ const Profile = () => {
             </View>
         );
     }
-
 }
 
 export default Profile
@@ -190,7 +196,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
     },
-    scroll : {
+    scroll: {
         width: '100%',
         padding: 20,
     }
