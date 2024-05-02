@@ -9,7 +9,7 @@ import citiesData from '../data/cities.json'
 import { CapitalizeData, ValidateDataSchoolAndLocalization } from '../utils/verification';
 import MultiSelectInput from '../components/selectInput/MultiSelectInput';
 import SingleSelectInput from '../components/selectInput/singleSelectInput';
-import { SchoolType } from '../types/Schooltype';
+import  SchoolType  from '../data/customTypes/School';
 import * as SecureStore from 'expo-secure-store'
 import City from '../data/customTypes/City';
 import { jwtDecode } from 'jwt-decode';
