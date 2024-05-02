@@ -10,6 +10,10 @@ import User from '../data/customTypes/User';
 import PostType from '../data/customTypes/Post';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { formatDate } from '../data/FormatDate';
+import CityJson from '../data/cities.json';
+import City from '../data/customTypes/City';
+import { CapitalizeData } from '../utils/verification';
+
 
 
 const Profile = () => {
@@ -79,6 +83,14 @@ const Profile = () => {
         }
     }
 
+    const getLocalisationName = (inseeCode: number) => {
+        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
+        if (result) {
+            return CapitalizeData(result.label);
+        }
+        return 'N/A';
+    }
+
     useEffect(() => {
         getUserConnected();
         getUserPosts();
@@ -103,18 +115,19 @@ const Profile = () => {
                 </View>
                 <ScrollView style={styles.scroll}>
                     {
-                        posts.map((post) => {
+                        posts.map((post, key) => {
                             return (
                                 <Post
+                                    key={key}
                                     name={user.name}
                                     username={user.username}
                                     profilePicture={profilePicture}
-                                    school={user.school.name}
-                                    label={post.content} 
+                                    schoolOrLocation={post.school ? post.school.name : getLocalisationName(post.location)}
+                                    label={post.content}
                                     comments={post.comments}
                                     date={formatDate(post.createdAt)}
-                                    />
-                                    
+                                />
+
                             );
                         })
                     }
@@ -164,7 +177,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
     },
-    scroll : {
+    scroll: {
         width: '100%',
         padding: 20,
     }
