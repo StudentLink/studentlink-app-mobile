@@ -1,15 +1,15 @@
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
 import { Colors } from '../utils/colors';
-import { jwtDecode } from 'jwt-decode';
-import User from '../data/customTypes/User';
 import PostType from '../data/customTypes/Post';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
-import Profile from './Profile';
+import City from '../data/customTypes/City';
+import { CapitalizeData } from '../utils/verification';
+import CityJson from '../data/cities.json';
 
 
 const HomePage = () => {
@@ -32,32 +32,44 @@ const HomePage = () => {
         }
     }
 
+    const getLocalisationName = (inseeCode: number) => {
+        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
+        if (result) {
+            return CapitalizeData(result.label);
+        }
+        return 'N/A';
+    }
+
     useEffect(() => {
         getPosts();
     }, []);
 
-    return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView>
-                {
-                    posts.map((post, index) => {
-                        return (
+    if (posts) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.header}>
+                    <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
+                </View>
+                <ScrollView style={styles.scroll}>
+                    {
+                        posts.map((post, index) => (
                             <Post
                                 key={index}
                                 label={post.content}
                                 name={post.user.name}
                                 username={post.user.username}
-                                school="School name"
+                                schoolOrLocation={post.school ? post.school.name : getLocalisationName(post.location)}
                                 comments={post.comments}
                                 date={formatDate(post.createdAt)}
                                 profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
                             />
-                        )
-                    })
-                }
-            </ScrollView>
-        </SafeAreaView>
-    )
+                        ))
+                    }
+                </ScrollView>
+            </SafeAreaView>
+        );
+    }
+
 }
 
 export default HomePage
@@ -68,5 +80,20 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.DARKEN_BLUE,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    header: {
+        height: 75,
+        width: "100%",
+        backgroundColor: Colors.DARKEN_BLUE,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 100,
+    },
+    logo: {
+        width: 125,
+        height: 50
+    },
+    scroll: {
+        flex: 1, // Take up remaining space
     },
 })

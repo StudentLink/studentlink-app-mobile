@@ -73,7 +73,6 @@ const Profile = () => {
                 },
             });
             const json = await response.json();
-            console.log(json);
             setPosts(json);
         } catch (error) {
             console.error(error)

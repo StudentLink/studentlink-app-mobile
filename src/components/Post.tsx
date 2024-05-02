@@ -1,19 +1,21 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Colors } from '../utils/colors'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import * as SecureStore from 'expo-secure-store'
+import School from '../data/customTypes/School'
 
 type Props = {
   label: string,
   name: string,
   username: string,
   profilePicture: string;
-  school: string;
+  schoolOrLocation: string | number;
   comments: Array<string>;
   date: string;
 }
 
-const Post = ({ label, name, username, profilePicture, school, comments, date }: Props) => {
+const Post = ({ label, name, username, profilePicture, schoolOrLocation, comments, date }: Props) => {
+
   return (
     <>
       <View style={styles.container}>
@@ -24,7 +26,7 @@ const Post = ({ label, name, username, profilePicture, school, comments, date }:
               <Text style={styles.name}>{name}</Text>
               <Text style={styles.username}>@{username}</Text>
             </View>
-            <Text style={styles.school}>{school}</Text>
+            <Text style={styles.school}>{schoolOrLocation}</Text>
           </View>
         </View>
         <View style={{ flex: 1, height: 1, backgroundColor: Colors.WHITE, marginVertical: 15, opacity: 0.1 }} />
