@@ -21,6 +21,8 @@ const NavBar = ({ state, navigation }: BottomTabBarProps) => {
                 return <Ionicons name={isFocused ? 'home' : 'home-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
             case 'Profile':
                 return <Ionicons name={isFocused ? 'person' : 'person-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
+            case 'School Feed':
+                return <Ionicons name={isFocused ? 'school' : 'school-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
             default:
                 return null;
         }
