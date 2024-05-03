@@ -5,6 +5,7 @@ import Profile from '../../screens/Profile';
 import NavBar from '../../components/NavBar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FeedSchools from '../../screens/FeedSchools';
+import FeedLocations from '../../screens/FeedLocations';
 
 const Tabs = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ const HomeBottomTab = () => {
             }}>
                 <Tabs.Screen name="Home" component={HomePage} />
                 <Tabs.Screen name="School Feed" component={FeedSchools} />
+                <Tabs.Screen name="Locations Feed" component={FeedLocations} />
                 <Tabs.Screen name="Profile" component={Profile} />
             </Tabs.Navigator>
     );

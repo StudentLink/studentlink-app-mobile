@@ -17,13 +17,13 @@ const App = () => {
     <Provider store={store}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='OnBoarding'>
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='HomePage'>
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name='HomePage' component={HomeBottomTab} />
             <Stack.Screen name="Authentication" component={Authentication} />
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="RegisterSchoolAndLocalization" component={RegisterSchoolAndLocalization} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name='HomePage' component={HomeBottomTab} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>
