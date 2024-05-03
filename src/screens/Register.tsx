@@ -9,6 +9,7 @@ import { updateUser } from '../data/reducer/userReducer';
 import { Colors } from '../utils/colors';
 import { CapitalizeData, ValidateDataRegister } from '../utils/verification';
 import * as SecureStore from 'expo-secure-store'
+import BackButton from '../components/Button/BackButton';
 
 const Register = () => {
     const navigation = useNavigation();
@@ -50,6 +51,7 @@ const Register = () => {
 
     return (
         <View style={styles.container}>
+            <BackButton onclick={() => { navigation.navigate('Authentication') }} />
             <Text style={styles.title}>Create Account</Text>
             <CustomInput label='Prénom' onChange={setFirstname} icon='person-outline' />
             <CustomInput label='Nom' onChange={setLastname} icon='person-outline' />

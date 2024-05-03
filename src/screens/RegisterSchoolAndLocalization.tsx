@@ -9,11 +9,12 @@ import citiesData from '../data/cities.json'
 import { CapitalizeData, ValidateDataSchoolAndLocalization } from '../utils/verification';
 import MultiSelectInput from '../components/selectInput/MultiSelectInput';
 import SingleSelectInput from '../components/selectInput/singleSelectInput';
-import  SchoolType  from '../data/customTypes/School';
+import SchoolType from '../data/customTypes/School';
 import * as SecureStore from 'expo-secure-store'
 import City from '../data/customTypes/City';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigation } from '@react-navigation/native';
+import BackButton from '../components/Button/BackButton';
 
 const RegisterSchoolAndLocalization = () => {
 
@@ -78,6 +79,7 @@ const RegisterSchoolAndLocalization = () => {
 
     return (
         <View style={styles.container}>
+            <BackButton onclick={() => { navigation.navigate('Register') }} />
             <Text style={styles.text}>Tu viens</Text>
             <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>d'où ?</Text>
             <SingleSelectInput data={school} onChange={({ value }) => setSchoolData(value)} />

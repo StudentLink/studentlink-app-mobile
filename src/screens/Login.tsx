@@ -7,6 +7,7 @@ import ButtonShadow from '../components/Button/ButtonShadow'
 import * as SecureStore from 'expo-secure-store'
 import { useNavigation } from '@react-navigation/native'
 import { ValidateDataLogin } from '../utils/verification'
+import BackButton from '../components/Button/BackButton'
 
 
 const Login = () => {
@@ -42,6 +43,7 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
+            <BackButton onclick={() => { navigation.navigate('Authentication') }} />
             <Text style={styles.title}>Login</Text>
             <CustomInput label="Email" icon='at' onChange={setEmail} />
             <CustomInput label="Password" icon='lock-closed-outline' onChange={setPassword} />
