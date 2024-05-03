@@ -17,7 +17,7 @@ const App = () => {
     <Provider store={store}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='HomePage'>
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='OnBoarding'>
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name='HomePage' component={HomeBottomTab} />
