@@ -49,7 +49,7 @@ const FeedSchools = (props: Props) => {
         if (!user) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/schools/${user.school.id}/posts`, {
+            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/feed/school`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
