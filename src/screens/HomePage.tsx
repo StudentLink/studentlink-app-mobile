@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.DARKEN_BLUE,
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     header: {
         height: 75,
@@ -94,6 +95,8 @@ const styles = StyleSheet.create({
         height: 50
     },
     scroll: {
-        flex: 1, // Take up remaining space
+        flex: 1,
+        paddingHorizontal: 5,
+        marginBottom: 50,
     },
 })
