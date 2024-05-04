@@ -10,11 +10,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import CityJson from '../data/cities.json';
+import { useNavigation } from '@react-navigation/native';
 
 
 const HomePage = () => {
 
     const [posts, setPosts] = useState<PostType[]>([]);
+    const navigation = useNavigation();
 
     const getPosts = async () => {
         try {
@@ -62,6 +64,7 @@ const HomePage = () => {
                                 comments={post.comments}
                                 date={formatDate(post.createdAt)}
                                 profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
+                                onClick={() => { navigation.navigate('PostDetails', {post: post})}}
                             />
                         ))
                     }
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.DARKEN_BLUE,
         alignItems: 'center',
         justifyContent: 'center',
-        
+
     },
     header: {
         height: 75,

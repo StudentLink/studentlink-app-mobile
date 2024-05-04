@@ -10,9 +10,10 @@ type Props = {
   schoolOrLocation: string | number;
   comments: Array<string>;
   date: string;
+  onClick: () => void;
 }
 
-const Post = ({ content, name, username, profilePicture, schoolOrLocation, comments, date }: Props) => {
+const Post = ({ content, name, username, profilePicture, schoolOrLocation, comments, date, onClick }: Props) => {
 
   return (
     <>
@@ -28,10 +29,10 @@ const Post = ({ content, name, username, profilePicture, schoolOrLocation, comme
           </View>
         </View>
         <View style={{ flex: 1, height: 1, backgroundColor: Colors.WHITE, marginVertical: 15, opacity: 0.1 }} />
-        <TouchableOpacity onPress={() => { console.log("HOLA NINO") }}>
+        <TouchableOpacity onPress={onClick}>
           <Text style={styles.content}>{content}</Text>
           <View style={styles.footer}>
-            <Text style={styles.comment}>{(comments.length == 0) ? "Ajouter un commentaire" : `${comments.length} commentaire${comments.length > 1 ?? 's'}`}</Text>
+            <Text style={styles.comment}>{(comments.length == 0) ? "Ajouter un commentaire" : `${comments.length} commentaire${comments.length > 1 ? 's' : ''}`}</Text>
             <Text style={styles.comment}>{date}</Text>
           </View>
         </TouchableOpacity>
