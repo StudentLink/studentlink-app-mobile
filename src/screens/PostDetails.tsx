@@ -9,14 +9,14 @@ import BackButton from '../components/Button/BackButton'
 import * as SecureStore from 'expo-secure-store'
 import Comment from '../components/Comment'
 import { ScrollView } from 'react-native-gesture-handler'
+import CommentType from '../data/customTypes/Comment'
 
 const PostDetails = () => {
 
   const route = useRoute();
   const { post } = route.params as { post: PostType };
-  console.log(post)
 
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
 
   const navigation = useNavigation();
 
@@ -30,7 +30,6 @@ const PostDetails = () => {
         },
       });
       const json = await response.json();
-      console.log(json);
       setComments(json);
     } catch (error) {
       console.error(error)
@@ -67,7 +66,7 @@ const PostDetails = () => {
       {comments.length > 0 ? (
         <ScrollView style={styles.scroll}>
           {
-            comments.map((comment, index) => (
+            comments?.map((comment, index) => (
               <Comment
                 key={index}
                 content={comment.content}

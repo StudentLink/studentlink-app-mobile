@@ -5,10 +5,9 @@ type Post = {
     id: number;
     content: string;
     school: School | null;
-    location: number
+    location: number;
     user: User;
     createdAt: string;
-    location: string;
     comments : Array<string>;
 };
 
