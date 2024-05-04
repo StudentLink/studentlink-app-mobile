@@ -7,15 +7,14 @@ import { jwtDecode } from 'jwt-decode';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
+import { useNavigation } from '@react-navigation/native';
 
-
-
-type Props = {}
-
-const FeedSchools = (props: Props) => {
+const FeedSchools = () => {
 
     const [user, setUser] = useState<User | null>(null);
     const [posts, setPosts] = useState<PostType[]>([]);
+
+    const navigation = useNavigation();
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
@@ -90,6 +89,7 @@ const FeedSchools = (props: Props) => {
                                 comments={post.comments}
                                 date={formatDate(post.createdAt)}
                                 profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
+                                onClick={() => { navigation.navigate('PostDetails', {post: post})}}
                             />
                         ))
                     }

@@ -10,14 +10,14 @@ import { Colors } from '../utils/colors';
 import { CapitalizeData } from '../utils/verification';
 import City from '../data/customTypes/City';
 import CityJson from '../data/cities.json';
+import { useNavigation } from '@react-navigation/native';
 
-
-type Props = {}
-
-const FeedLocations = (props: Props) => {
+const FeedLocations = () => {
 
     const [user, setUser] = useState<User | null>(null);
     const [posts, setPosts] = useState<PostType[]>([]);
+
+    const navigation = useNavigation();
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
@@ -99,6 +99,7 @@ const FeedLocations = (props: Props) => {
                                 comments={post.comments}
                                 date={formatDate(post.createdAt)}
                                 profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
+                                onClick={() => { navigation.navigate('PostDetails', {post: post})}}
                             />
                         ))
                     }
