@@ -7,8 +7,8 @@ import { formatDate } from '../data/FormatDate'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import BackButton from '../components/Button/BackButton'
 import * as SecureStore from 'expo-secure-store'
-
-type Props = {}
+import Comment from '../components/Comment'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const PostDetails = () => {
 
@@ -41,7 +41,6 @@ const PostDetails = () => {
     getComments();
   }, []);
 
-
   return (
     <SafeAreaView style={styles.container}>
       <BackButton onclick={() => navigation.goBack()} />
@@ -65,17 +64,21 @@ const PostDetails = () => {
           </View>
         </View>
       </View>
-
-      <View>
-        {
-          comments.map((comment, index) => (
-            <View key={index}>
-              <Text style={styles.text}>{comment.content}</Text>
-            </View>
-          ))
-        }
-      </View>
-
+      {comments.length > 0 ? (
+        <ScrollView style={styles.scroll}>
+          {
+            comments.map((comment, index) => (
+              <Comment
+                key={index}
+                content={comment.content}
+                createdAt={formatDate(comment.createdAt)}
+                name={comment.user.name}
+                username={comment.user.username}
+                profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${comment.user.name.replaceAll(/[ -'_]+/g, '+')}`} />
+            ))
+          }
+        </ScrollView>
+      ) : <Text style={styles.noComment}>Aucun commentaire</Text>}
     </SafeAreaView>
   )
 }
@@ -90,8 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   post: {
-    position: 'absolute',
-    top: 100,
+    marginTop: 40,
     paddingVertical: 30,
     backgroundColor: Colors.DARKEN_BLUE_LIGHTER,
     height: 'auto',
@@ -150,8 +152,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     opacity: 0.5,
   },
-  text: {
-    color: Colors.WHITE
+  scroll: {
+    marginTop: 20,
+  },
+  noComment: {
+    flex: 1,
+    color: Colors.WHITE,
+    marginTop: 20,
+    fontSize: 20,
+    opacity: 0.5,
   }
-
 })
