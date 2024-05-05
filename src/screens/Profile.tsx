@@ -13,8 +13,6 @@ import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 
-
-
 const Profile = () => {
 
     const [user, setUser] = useState<User | null>(null);
@@ -30,7 +28,6 @@ const Profile = () => {
         }
         return null;
     }
-
 
     const getUserConnected = async () => {
         const token = decodeToken();

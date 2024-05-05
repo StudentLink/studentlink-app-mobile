@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Colors } from '../utils/colors'
 import { Constant } from '../utils/constant'
 import CustomInput from '../components/CustomInput'

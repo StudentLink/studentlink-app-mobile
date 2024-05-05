@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import ButtonShadow from '../components/Button/ButtonShadow';
-import { updateUser } from '../data/reducer/userReducer';
 import { Constant } from '../utils/constant';
 import { Colors } from '../utils/colors';
 import citiesData from '../data/cities.json'
@@ -11,7 +9,6 @@ import MultiSelectInput from '../components/selectInput/MultiSelectInput';
 import SingleSelectInput from '../components/selectInput/singleSelectInput';
 import SchoolType from '../data/customTypes/School';
 import * as SecureStore from 'expo-secure-store'
-import City from '../data/customTypes/City';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Button/BackButton';
@@ -23,9 +20,6 @@ const RegisterSchoolAndLocalization = () => {
     const [localisations, setLocalisations] = useState<string[]>([""]);
     const [school, setSchool] = useState<{ label: string, value: string }[]>([{ label: "", value: "" }]);
     const [schoolData, setSchoolData] = useState<string>('');
-
-    const dispatch = useDispatch();
-    const user = useSelector((state: any) => state.user);
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
@@ -102,6 +96,7 @@ const RegisterSchoolAndLocalization = () => {
         </View>
     )
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

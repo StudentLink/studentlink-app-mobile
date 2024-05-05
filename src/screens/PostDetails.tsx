@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, Pressable, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '../utils/colors'
 import { useNavigation, useRoute } from '@react-navigation/native'

@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Constant } from '../utils/constant';
 import CustomInput from '../components/CustomInput';
 import ButtonShadow from '../components/Button/ButtonShadow';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '../data/reducer/userReducer';
 import { Colors } from '../utils/colors';
 import { CapitalizeData, ValidateDataRegister } from '../utils/verification';
 import * as SecureStore from 'expo-secure-store'
@@ -20,7 +18,6 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
-
 
     const registerUser = async () => {
         try {
@@ -69,6 +66,7 @@ const Register = () => {
         </View>
     )
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
