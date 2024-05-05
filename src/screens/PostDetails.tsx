@@ -56,7 +56,6 @@ const PostDetails = () => {
         })
       });
       const json = await response.json();
-      console.log(json);
       setUserComment('');
     } catch (error) {
       console.error(error)
@@ -100,17 +99,18 @@ const PostDetails = () => {
           </View>
         </View>
         {comments.length > 0 ? (
-          <><ScrollView style={styles.scroll}>
-            {comments?.map((comment, index) => (
-              <Comment
-                key={index}
-                content={comment.content}
-                createdAt={formatDate(comment.createdAt)}
-                name={comment.user.name}
-                username={comment.user.username}
-                profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${comment.user.name.replaceAll(/[ -'_]+/g, '+')}`} />
-            ))}
-          </ScrollView>
+          <>
+            <ScrollView style={styles.scroll}>
+              {comments?.map((comment, index) => (
+                <Comment
+                  key={index}
+                  content={comment.content}
+                  createdAt={formatDate(comment.createdAt)}
+                  name={comment.user.name}
+                  username={comment.user.username}
+                  profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${comment.user.name.replaceAll(/[ -'_]+/g, '+')}`} />
+              ))}
+            </ScrollView>
             <View style={styles.input}>
               <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} value={userComment} />
               <TouchableOpacity style={styles.button} onPress={() => addComment()}>
@@ -118,14 +118,15 @@ const PostDetails = () => {
               </TouchableOpacity>
             </View>
           </>
-        ) : <><Text style={styles.noComment}>Aucun commentaire</Text><View style={styles.input}>
-          <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} value={userComment} />
-          <TouchableOpacity style={styles.button} onPress={() => addComment()}>
-            <Ionicons name="send" size={15} color={Colors.BLUE} />
-          </TouchableOpacity>
-        </View></>
+        ) : <><Text style={styles.noComment}>Aucun commentaire</Text>
+          <View style={styles.input}>
+            <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} value={userComment} />
+            <TouchableOpacity style={styles.button} onPress={() => addComment()}>
+              <Ionicons name="send" size={15} color={Colors.BLUE} />
+            </TouchableOpacity>
+          </View>
+        </>
         }
-
       </KeyboardAvoidingView>
     </SafeAreaView>
   )

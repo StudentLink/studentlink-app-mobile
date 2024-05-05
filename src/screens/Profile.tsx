@@ -12,6 +12,7 @@ import { formatDate } from '../data/FormatDate';
 import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
+import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
 
@@ -19,6 +20,8 @@ const Profile = () => {
     const [profilePicture, setProfilePicture] = useState('');
     const [posts, setPosts] = useState<PostType[]>([]);
     const [locations, setLocations] = useState<string[]>([]);
+
+    const navigation = useNavigation();
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
@@ -42,7 +45,6 @@ const Profile = () => {
                 },
             });
             const json = await response.json();
-            console.log("User", json);
             setUser(json);
             if (user) {
                 getProfilePicture();
@@ -143,6 +145,7 @@ const Profile = () => {
                                     content={post.content}
                                     comments={post.comments}
                                     date={formatDate(post.createdAt)}
+                                    onClick={() => { navigation.navigate('PostDetails', {post: post})}}
                                 />
 
                             );

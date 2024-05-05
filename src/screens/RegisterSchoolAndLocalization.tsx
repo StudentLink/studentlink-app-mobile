@@ -76,7 +76,7 @@ const RegisterSchoolAndLocalization = () => {
             <BackButton onclick={() => { navigation.navigate('Register') }} />
             <Text style={styles.text}>Tu viens</Text>
             <Text style={[styles.text, { color: Colors.BLUE, marginBottom: Constant.MARGIN_BOTTOM_TITLE }]}>d'où ?</Text>
-            <SingleSelectInput data={school} onChange={({ value }) => setSchoolData(value)} />
+            <SingleSelectInput data={school} onChange={({ value }) => setSchoolData(value)} icon='school-outline' />
             <MultiSelectInput
                 onChange={setLocalisations}
                 data={citiesData.map(city => (

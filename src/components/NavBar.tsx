@@ -21,10 +21,12 @@ const NavBar = ({ state, navigation }: BottomTabBarProps) => {
                 return <Ionicons name={isFocused ? 'home' : 'home-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
             case 'Profile':
                 return <Ionicons name={isFocused ? 'person' : 'person-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'School Feed':
+            case 'School':
                 return <Ionicons name={isFocused ? 'school' : 'school-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'Locations Feed':
+            case 'Locations':
                 return <Ionicons name={isFocused ? 'location' : 'location-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
+            case 'Add':
+                return <Ionicons name={isFocused ? 'add-circle' : 'add-circle-outline'} size={50} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
             default:
                 return null;
         }

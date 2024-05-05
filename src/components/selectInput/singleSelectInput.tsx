@@ -7,9 +7,10 @@ import { Colors } from '../../utils/colors';
 type Props = {
     data: Array<{ label: string, value: string }>
     onChange: ((item: { label: string, value: string }) => void)
+    icon : string,
 }
 
-const SingleSelectInput = ({data, onChange} : Props) => {
+const SingleSelectInput = ({data, onChange, icon} : Props) => {
     const [selected, setSelected] = useState('');
 
     const renderItem = item => {
@@ -48,7 +49,7 @@ const SingleSelectInput = ({data, onChange} : Props) => {
                 setSelected(item.value);
             }}
             renderLeftIcon={() => (
-                <Ionicons style={styles.icon} color={Colors.DARKEN_BLUE} name="school-outline" size={25} />
+                <Ionicons style={styles.icon} color={Colors.DARKEN_BLUE} name={icon} size={25} />
             )}
             renderItem={renderItem}
         />
