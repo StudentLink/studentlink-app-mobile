@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
     scroll: {
         flex: 1,
         paddingHorizontal: 5,
-        marginBottom: 50,
+        marginBottom: 55,
     },
 })

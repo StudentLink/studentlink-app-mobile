@@ -49,7 +49,6 @@ const Profile = () => {
             if (user) {
                 getProfilePicture();
             }
-
         } catch (error) {
             console.error(error)
         }
@@ -91,12 +90,11 @@ const Profile = () => {
                         return y.insee_code == `${x}`;
                     });
                     if (city) {
-                        return CapitalizeData(city.label);
+                        return CapitalizeData(`${city.label}/`);
                     }
                     return 'N/A';
                 });
                 setLocations(data);
-                ;
             }
         }
     }
@@ -145,9 +143,8 @@ const Profile = () => {
                                     content={post.content}
                                     comments={post.comments}
                                     date={formatDate(post.createdAt)}
-                                    onClick={() => { navigation.navigate('PostDetails', {post: post})}}
+                                    onClick={() => { navigation.navigate('PostDetails', { post: post }) }}
                                 />
-
                             );
                         })
                     }
@@ -197,7 +194,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     scroll: {
+        flex: 1,
         width: '100%',
-        padding: 20,
+        paddingHorizontal: 5,
+        marginBottom: 55,
     }
 })

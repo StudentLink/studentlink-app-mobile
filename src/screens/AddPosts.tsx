@@ -19,7 +19,7 @@ const AddPosts = () => {
     const [postLocation, setPostLocation] = useState<string | null>(null);
     const [postSchool, setPostSchool] = useState<number | null>(null);
     const [postContent, setPostContent] = useState<string>('');
-    const [postSuccess, setPostSuccess] = useState<boolean>(true);
+    const [postSuccess, setPostSuccess] = useState<boolean>(false);
 
     const decodeToken = () => {
         const token = SecureStore.getItem('token');
