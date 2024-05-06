@@ -24,7 +24,7 @@ const SingleSelectInput = ({ data, onChange, icon }: Props) => {
                         name="checkmark"
                         size={25}
                     />
-                )};
+                )}
             </View>
         );
     };
