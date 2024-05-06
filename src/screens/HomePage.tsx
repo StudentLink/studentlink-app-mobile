@@ -10,13 +10,15 @@ import { ScrollView } from 'react-native-gesture-handler';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import CityJson from '../data/cities.json';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import getLocalisationName from '../utils/getLocalisationName';
 
 
 const HomePage = () => {
     const [posts, setPosts] = useState<PostType[]>();
+
     const navigation = useNavigation();
+    const isFocused = useIsFocused();
 
     const getPosts = async () => {
         try {
@@ -35,8 +37,10 @@ const HomePage = () => {
     }
 
     useEffect(() => {
-        getPosts();
-    }, []);
+        if (isFocused) {
+            getPosts();
+        }
+    }, [isFocused]);
 
     if (posts) {
         if (posts.length >= 1) {

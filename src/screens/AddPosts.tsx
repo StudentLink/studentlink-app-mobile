@@ -11,6 +11,7 @@ import CityJson from '../data/cities.json'
 import { CapitalizeData } from '../utils/verification'
 import ButtonShadow from '../components/Button/ButtonShadow'
 import decodeToken from '../utils/decodeToken'
+import { useIsFocused } from '@react-navigation/native'
 
 const AddPosts = () => {
 
@@ -21,6 +22,8 @@ const AddPosts = () => {
     const [postSchool, setPostSchool] = useState<number | null>(null);
     const [postContent, setPostContent] = useState<string>('');
     const [postSuccess, setPostSuccess] = useState<boolean>(false);
+
+    const isFocused = useIsFocused();
 
     const getUserConnected = async () => {
         const token = decodeToken();
@@ -82,12 +85,14 @@ const AddPosts = () => {
     }
 
     useEffect(() => {
-        getUserConnected();
-    }, [])
+        if (isFocused) {
+            getUserConnected();
+        }
+    }, [isFocused]);
 
     useEffect(() => {
         getUserLocations();
-    }, [user])
+    }, [user]);
 
     if (user) {
         return (

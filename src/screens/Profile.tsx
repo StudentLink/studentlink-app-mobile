@@ -12,7 +12,7 @@ import { formatDate } from '../data/FormatDate';
 import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons'
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
@@ -26,6 +26,7 @@ const Profile = () => {
     const [locations, setLocations] = useState<string[]>([]);
 
     const navigation = useNavigation();
+    const isFocused = useIsFocused();
 
     const getUserConnected = async () => {
         const token = decodeToken();
@@ -95,9 +96,11 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        getUserConnected();
-        getUserPosts();
-    }, []);
+        if (isFocused) {
+            getUserConnected();
+            getUserPosts();
+        }
+    }, [isFocused]);
 
     useEffect(() => {
         if (user) {
@@ -109,7 +112,7 @@ const Profile = () => {
     if (user) {
         return (
             <SafeAreaView style={styles.container}>
-                <Ionicons name="log-out-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, right: 20 }} onPress={() => {SecureStore.deleteItemAsync('token'),  navigation.navigate('Authentication')}} />
+                <Ionicons name="log-out-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, right: 20 }} onPress={() => { SecureStore.deleteItemAsync('token'), navigation.navigate('Authentication') }} />
                 <Ionicons name="create-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, left: 20 }} onPress={() => { navigation.navigate('Settings') }} />
                 <Image src={profilePicture} style={styles.picture} />
                 <Text style={styles.name}>{user.name}</Text>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colors } from '../utils/colors'
 import BackButton from '../components/Button/BackButton'
-import { useNavigation } from '@react-navigation/native'
+import { useIsFocused, useNavigation } from '@react-navigation/native'
 import SettingsBoxTwoInput from '../components/settingsBoxTwoInput'
 import SettingsBoxOneInput from '../components/settingsBoxOneInput'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -24,6 +24,8 @@ const Settings = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+
+    const isFocused = useIsFocused();
 
     const getUserConnected = async () => {
         const token = decodeToken();
@@ -73,7 +75,9 @@ const Settings = () => {
     }
 
     useEffect(() => {
-        getUserConnected();
+        if (isFocused) {
+            getUserConnected();
+        }
     }, [])
 
     if (user) {
@@ -95,7 +99,6 @@ const Settings = () => {
                         updateUser()
                     };
                     if (ValidateDataUpdate(email, password, confirmPassword)) {
-                        console.log('ok')
                         updateUser()
                     }
                 }} />

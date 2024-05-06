@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '../utils/colors'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
 import PostType from '../data/customTypes/Post'
 import { formatDate } from '../data/FormatDate'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -25,7 +25,7 @@ const PostDetails = () => {
   const [comments, setComments] = useState<CommentType[]>([]);
   const [userComment, setUserComment] = useState('');
 
-  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   const getComments = async () => {
     try {
@@ -64,7 +64,9 @@ const PostDetails = () => {
   }
 
   useEffect(() => {
-    getComments();
+    if (isFocused) {
+      getComments();
+    }
   }, []);
 
   return (

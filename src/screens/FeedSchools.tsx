@@ -7,7 +7,7 @@ import { jwtDecode } from 'jwt-decode';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
 
 const FeedSchools = () => {
@@ -16,6 +16,7 @@ const FeedSchools = () => {
     const [posts, setPosts] = useState<PostType[]>();
 
     const navigation = useNavigation();
+    const isFocused = useIsFocused();
 
     const getUserConnected = async () => {
         const token = decodeToken();
@@ -55,8 +56,10 @@ const FeedSchools = () => {
     }
 
     useEffect(() => {
-        getUserConnected();;
-    }, [])
+        if (isFocused) {
+            getUserConnected();
+        }
+    }, [isFocused])
 
     useEffect(() => {
         getPostsSchoolsUser();

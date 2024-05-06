@@ -10,7 +10,7 @@ import { Colors } from '../utils/colors';
 import { CapitalizeData } from '../utils/verification';
 import City from '../data/customTypes/City';
 import CityJson from '../data/cities.json';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
 
@@ -20,6 +20,7 @@ const FeedLocations = () => {
     const [posts, setPosts] = useState<PostType[]>();
 
     const navigation = useNavigation();
+    const isFocused = useIsFocused();
 
     const getUserConnected = async () => {
         const token = decodeToken();
@@ -59,8 +60,10 @@ const FeedLocations = () => {
     }
 
     useEffect(() => {
-        getUserConnected();;
-    }, [])
+        if (isFocused) {
+            getUserConnected();
+        }
+    }, [isFocused])
 
     useEffect(() => {
         getPostsLocationsUser();
