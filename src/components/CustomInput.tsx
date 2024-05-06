@@ -7,10 +7,11 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 type Props = {
     label: string;
     onChange: Dispatch<SetStateAction<string>>;
-    icon: string;
+    icon?: string;
+    value?: string;
 }
 
-const CustomInput = ({ label, onChange, icon }: Props) => {
+const CustomInput = ({ label, onChange, icon, value }: Props) => {
     return (
         <View style={styles.container}>
             <View style={styles.sectionStyle}>
@@ -22,6 +23,7 @@ const CustomInput = ({ label, onChange, icon }: Props) => {
                     onChangeText={onChange}
                     contextMenuHidden={true}
                     secureTextEntry={label === 'Password' || label === 'Confirm password'}
+                    value={value}
                 />
             </View>
         </View>
@@ -31,12 +33,12 @@ const CustomInput = ({ label, onChange, icon }: Props) => {
 export default CustomInput
 
 const styles = StyleSheet.create({
-    container : {
-        justifyContent : 'center',
-        alignItems : 'center',
+    container: {
+        justifyContent: 'center',
+        alignItems: 'center',
         margin: 15,
     },
-    sectionStyle : {
+    sectionStyle: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
         width: 300,
         height: 50,
     },
-    
+
     textInput: {
         paddingHorizontal: 15,
         paddingVertical: 10,

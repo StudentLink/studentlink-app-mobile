@@ -112,7 +112,7 @@ const PostDetails = () => {
               ))}
             </ScrollView>
             <View style={styles.input}>
-              <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} value={userComment} />
+              <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} enterKeyHint='done' blurOnSubmit value={userComment} />
               <TouchableOpacity style={styles.button} onPress={() => addComment()}>
                 <Ionicons name="send" size={15} color={Colors.BLUE} />
               </TouchableOpacity>
@@ -120,7 +120,7 @@ const PostDetails = () => {
           </>
         ) : <><Text style={styles.noComment}>Aucun commentaire</Text>
           <View style={styles.input}>
-            <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} value={userComment} />
+            <TextInput style={styles.addComment} placeholder="Ajouter un commentaire" placeholderTextColor={Colors.WHITE} onChangeText={setUserComment} multiline={true} enterKeyHint='done' blurOnSubmit value={userComment} />
             <TouchableOpacity style={styles.button} onPress={() => addComment()}>
               <Ionicons name="send" size={15} color={Colors.BLUE} />
             </TouchableOpacity>

@@ -10,6 +10,7 @@ import Authentication from './src/screens/Authentication';
 import Login from './src/screens/Login';
 import HomeBottomTab from './src/assets/navigation/HomeBottomTab';
 import PostDetails from './src/screens/PostDetails';
+import Settings from './src/screens/Settings';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,7 @@ const App = () => {
     <Provider store={store}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='HomePage'>
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Authentication'>
             <Stack.Screen name="OnBoarding" component={OnBoarding} />
             <Stack.Screen name="Authentication" component={Authentication} />
             <Stack.Screen name="Register" component={Register} />
@@ -26,6 +27,7 @@ const App = () => {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name='HomePage' component={HomeBottomTab} />
             <Stack.Screen name='PostDetails' component={PostDetails} />
+            <Stack.Screen name='Settings' component={Settings} />
           </Stack.Navigator>
         </NavigationContainer>
       </GestureHandlerRootView>

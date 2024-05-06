@@ -13,6 +13,8 @@ import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import { useNavigation } from '@react-navigation/native';
+import Ionicons from '@expo/vector-icons/Ionicons'
+
 
 const Profile = () => {
 
@@ -122,6 +124,7 @@ const Profile = () => {
     if (user) {
         return (
             <SafeAreaView style={styles.container}>
+                <Ionicons name="settings-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, right: 20 }} onPress={() => { navigation.navigate('Settings') }} />
                 <Image src={profilePicture} style={styles.picture} />
                 <Text style={styles.name}>{user.name}</Text>
                 <Text style={styles.username}>@{user.username}</Text>

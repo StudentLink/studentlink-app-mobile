@@ -57,3 +57,14 @@ export const ValidateDataSchoolAndLocalization = (
   }
   return true;
 };
+
+export const ValidateDataUpdate = (
+  email: string,
+  password: string,
+  confirmPassword: string
+) => {
+  if (ValidateEmail(email) && ValidatePassword(password, confirmPassword)) {
+    return true;
+  }
+  return false;
+};
