@@ -2,7 +2,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import OnBoarding from './src/screens/OnBoarding';
-import { Provider } from 'react-redux';
 import RegisterSchoolAndLocalization from './src/screens/RegisterSchoolAndLocalization';
 import Register from './src/screens/Register';
 import Authentication from './src/screens/Authentication';
@@ -14,10 +13,12 @@ import Settings from './src/screens/Settings';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+
+  const token = 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='HomePage'>
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Authentication'>
           <Stack.Screen name="OnBoarding" component={OnBoarding} />
           <Stack.Screen name="Authentication" component={Authentication} />
           <Stack.Screen name="Register" component={Register} />
