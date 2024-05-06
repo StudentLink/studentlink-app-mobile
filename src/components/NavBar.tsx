@@ -36,7 +36,7 @@ const NavBar = ({ state, navigation }: BottomTabBarProps) => {
         <View style={styles.navbarContainer}>
             <View style={styles.navbarInnerContainer}>
                 {screens.map((route, index) => (
-                    <TouchableOpacity style={styles.navbarButton} onPress={() => navigate(index, route.name)}>
+                    <TouchableOpacity style={styles.navbarButton} onPress={() => navigate(index, route.name)} key={index}>
                         {getTabIcon(route.name, index === focusedIndex)}
                         <Text style={styles.navbarText}>{route.name}</Text>
                     </TouchableOpacity>

@@ -22,7 +22,7 @@ const CustomInput = ({ label, onChange, icon, value }: Props) => {
                     placeholderTextColor={Colors.BLUE}
                     onChangeText={onChange}
                     contextMenuHidden={true}
-                    secureTextEntry={label === 'Password' || label === 'Confirm password' || label === 'New password' || label === 'Confirm new password'}
+                    secureTextEntry={label === 'Mot de passe' || label === 'Confirmation' || label === 'Nouveau mot de passe'}
                     enterKeyHint='done'
                     value={value}
                 />

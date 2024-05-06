@@ -16,8 +16,6 @@ import ButtonShadow from '../components/Button/ButtonShadow'
 
 const Settings = () => {
 
-    const navigation = useNavigation();
-
     const [user, setUser] = useState<User | null>(null);
     const [username, setUsername] = useState<string>('')
     const [firstname, setFirstname] = useState<string>('');
@@ -102,7 +100,11 @@ const Settings = () => {
                     </View>
                 </ScrollView>
                 <ButtonShadow label='Enregistrer' onClick={() => {
+                    if (username && firstname && lastname) {
+                        updateUser()
+                    };
                     if (ValidateDataUpdate(email, password, confirmPassword)) {
+                        console.log('ok')
                         updateUser()
                     }
                 }} />
