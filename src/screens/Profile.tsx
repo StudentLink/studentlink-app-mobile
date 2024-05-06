@@ -124,7 +124,8 @@ const Profile = () => {
     if (user) {
         return (
             <SafeAreaView style={styles.container}>
-                <Ionicons name="settings-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, right: 20 }} onPress={() => { navigation.navigate('Settings') }} />
+                <Ionicons name="log-out-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, right: 20 }} onPress={() => {SecureStore.deleteItemAsync('token'),  navigation.navigate('Authentication')}} />
+                <Ionicons name="settings-outline" size={30} color={Colors.BLUE} style={{ position: 'absolute', top: 60, left: 20 }} onPress={() => { navigation.navigate('Settings') }} />
                 <Image src={profilePicture} style={styles.picture} />
                 <Text style={styles.name}>{user.name}</Text>
                 <Text style={styles.username}>@{user.username}</Text>
