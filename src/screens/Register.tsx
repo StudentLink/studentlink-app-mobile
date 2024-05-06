@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text } from 'react-native'
 import React, { useState } from 'react'
 import { Constant } from '../utils/constant';
 import CustomInput from '../components/CustomInput';
@@ -45,7 +45,7 @@ const Register = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return (
         <SafeAreaView style={styles.container}>

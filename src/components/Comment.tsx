@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
-import Post from '../data/customTypes/Post'
+import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
 import { Colors } from '../utils/colors';
 
 type Props = {
@@ -32,10 +31,10 @@ const Comment = ({ content, createdAt, name, username, profilePicture }: Props) 
             </View>
             <View style={{ flex: 1, height: 1, backgroundColor: Colors.WHITE, marginVertical: 15, opacity: 0.1 }} />
         </View>
-    )
-}
+    );
+};
 
-export default Comment
+export default Comment;
 
 const styles = StyleSheet.create({
     container: {
@@ -90,4 +89,4 @@ const styles = StyleSheet.create({
         fontSize: 15,
         opacity: 0.5,
     },
-})
+});

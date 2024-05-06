@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { Colors } from '../../utils/colors'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { Colors } from '../../utils/colors';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import { MultiSelect } from 'react-native-element-dropdown';
 
@@ -138,4 +138,4 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: Colors.WHITE,
     },
-})
+});

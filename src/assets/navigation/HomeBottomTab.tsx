@@ -11,16 +11,16 @@ const Tabs = createBottomTabNavigator();
 
 const HomeBottomTab = () => {
     return (
-            <Tabs.Navigator screenOptions={{ headerShown: false, }} tabBar={(props) => {
-                return <NavBar {...props} />
-            }}>
-                <Tabs.Screen name="Accueil" component={HomePage} />
-                <Tabs.Screen name="Ecole" component={FeedSchools} />
-                <Tabs.Screen name="Ajouter" component={AddPosts} />
-                <Tabs.Screen name="Lieux" component={FeedLocations} />
-                <Tabs.Screen name="Profil" component={Profile} />
-            </Tabs.Navigator>
+        <Tabs.Navigator screenOptions={{ headerShown: false, }} tabBar={(props) => {
+            return <NavBar {...props} />
+        }}>
+            <Tabs.Screen name="Accueil" component={HomePage} />
+            <Tabs.Screen name="Ecole" component={FeedSchools} />
+            <Tabs.Screen name="Ajouter" component={AddPosts} />
+            <Tabs.Screen name="Lieux" component={FeedLocations} />
+            <Tabs.Screen name="Profil" component={Profile} />
+        </Tabs.Navigator>
     );
-}
+};
 
 export default HomeBottomTab;

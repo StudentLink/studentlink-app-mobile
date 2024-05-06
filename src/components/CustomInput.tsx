@@ -1,8 +1,7 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { Dispatch, SetStateAction } from 'react'
-import { Colors } from '../utils/colors'
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Ionicons from '@expo/vector-icons/Ionicons'
+import { StyleSheet, TextInput, View } from 'react-native';
+import React, { Dispatch, SetStateAction } from 'react';
+import { Colors } from '../utils/colors';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 type Props = {
     label: string;
@@ -31,7 +30,7 @@ const CustomInput = ({ label, onChange, icon, value }: Props) => {
     )
 }
 
-export default CustomInput
+export default CustomInput;
 
 const styles = StyleSheet.create({
     container: {

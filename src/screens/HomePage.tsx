@@ -1,18 +1,14 @@
-import { StyleSheet, View, Image, ActivityIndicator, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import * as SecureStore from 'expo-secure-store'
+import { StyleSheet, View, Image, ActivityIndicator, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import * as SecureStore from 'expo-secure-store';
 import { Colors } from '../utils/colors';
 import PostType from '../data/customTypes/Post';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
-import City from '../data/customTypes/City';
-import { CapitalizeData } from '../utils/verification';
-import CityJson from '../data/cities.json';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import getLocalisationName from '../utils/getLocalisationName';
-
 
 const HomePage = () => {
     const [posts, setPosts] = useState<PostType[]>();
@@ -34,7 +30,7 @@ const HomePage = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
@@ -81,7 +77,6 @@ const HomePage = () => {
             );
         }
     } else {
-
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
@@ -93,10 +88,9 @@ const HomePage = () => {
             </SafeAreaView>
         );
     }
+};
 
-}
-
-export default HomePage
+export default HomePage;
 
 const styles = StyleSheet.create({
     container: {
@@ -123,4 +117,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         marginBottom: 50,
     },
-})
+});

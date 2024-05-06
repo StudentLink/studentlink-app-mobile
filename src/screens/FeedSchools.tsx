@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import PostType from '../data/customTypes/Post';
 import User from '../data/customTypes/User';
 import * as SecureStore from 'expo-secure-store'
-import { jwtDecode } from 'jwt-decode';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
@@ -35,7 +34,7 @@ const FeedSchools = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const getPostsSchoolsUser = async () => {
         if (!user) return;
@@ -53,17 +52,17 @@ const FeedSchools = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
             getUserConnected();
         }
-    }, [isFocused])
+    }, [isFocused]);
 
     useEffect(() => {
         getPostsSchoolsUser();
-    }, [user])
+    }, [user]);
 
     if (posts) {
         if (posts.length >= 1) {
@@ -117,9 +116,9 @@ const FeedSchools = () => {
             </SafeAreaView>
         );
     }
-}
+};
 
-export default FeedSchools
+export default FeedSchools;
 
 const styles = StyleSheet.create({
     container: {
@@ -146,4 +145,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         marginBottom: 55,
     },
-})
+});

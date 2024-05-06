@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { Dispatch, SetStateAction } from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Colors } from '../utils/colors';
 import CustomInput from './CustomInput';
 
@@ -25,10 +25,10 @@ const settingsBoxTwoInput = ({ title, labelOne, labelTwo, onChangeOne, onChangeT
 
             </View>
         </>
-    )
-}
+    );
+};
 
-export default settingsBoxTwoInput
+export default settingsBoxTwoInput;
 
 const styles = StyleSheet.create({
     title: {
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
     }
-})
+});

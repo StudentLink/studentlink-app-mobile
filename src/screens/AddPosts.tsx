@@ -1,17 +1,16 @@
-import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Colors } from '../utils/colors'
-import { jwtDecode } from 'jwt-decode'
-import * as SecureStore from 'expo-secure-store'
-import User from '../data/customTypes/User'
-import CustomRadioButton from '../components/Button/CustomRadioButton'
-import SingleSelectInput from '../components/selectInput/singleSelectInput'
-import City from '../data/customTypes/City'
-import CityJson from '../data/cities.json'
-import { CapitalizeData } from '../utils/verification'
-import ButtonShadow from '../components/Button/ButtonShadow'
-import decodeToken from '../utils/decodeToken'
-import { useIsFocused } from '@react-navigation/native'
+import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Colors } from '../utils/colors';
+import * as SecureStore from 'expo-secure-store';
+import User from '../data/customTypes/User';
+import CustomRadioButton from '../components/Button/CustomRadioButton';
+import SingleSelectInput from '../components/selectInput/singleSelectInput';
+import City from '../data/customTypes/City';
+import CityJson from '../data/cities.json';
+import { CapitalizeData } from '../utils/verification';
+import ButtonShadow from '../components/Button/ButtonShadow';
+import decodeToken from '../utils/decodeToken';
+import { useIsFocused } from '@react-navigation/native';
 
 const AddPosts = () => {
 
@@ -42,7 +41,7 @@ const AddPosts = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const getUserLocations = async () => {
         if (user) {
@@ -82,7 +81,7 @@ const AddPosts = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
@@ -109,16 +108,14 @@ const AddPosts = () => {
                     {postSuccess ? <Text style={styles.success}>Post publié avec succès</Text> : null}
                 </KeyboardAvoidingView>
             </SafeAreaView >
-        )
+        );
     }
     return (
-        <SafeAreaView style={styles.container}>
-            
-        </SafeAreaView>
-    )
+        <SafeAreaView style={styles.container} />
+    );
 }
 
-export default AddPosts
+export default AddPosts;
 
 const styles = StyleSheet.create({
     container: {
@@ -127,7 +124,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    keyboardAvoiding :{
+    keyboardAvoiding: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -171,4 +168,4 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         marginTop: 20,
     }
-})
+});

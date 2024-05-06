@@ -1,15 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import PostType from '../data/customTypes/Post';
 import User from '../data/customTypes/User';
 import * as SecureStore from 'expo-secure-store'
-import { jwtDecode } from 'jwt-decode';
 import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
-import { CapitalizeData } from '../utils/verification';
-import City from '../data/customTypes/City';
-import CityJson from '../data/cities.json';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
@@ -39,7 +35,7 @@ const FeedLocations = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const getPostsLocationsUser = async () => {
         if (!user) return;
@@ -57,17 +53,18 @@ const FeedLocations = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
             getUserConnected();
         }
-    }, [isFocused])
+    }, [isFocused]);
 
     useEffect(() => {
         getPostsLocationsUser();
-    }, [user])
+    }, [user]);
+
     if (posts) {
         if (posts.length >= 1) {
             return (
@@ -118,10 +115,10 @@ const FeedLocations = () => {
                 </ScrollView>
             </SafeAreaView>
         );
-    }
-}
+    };
+};
 
-export default FeedLocations
+export default FeedLocations;
 
 const styles = StyleSheet.create({
     container: {
@@ -148,4 +145,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         marginBottom: 55,
     },
-})
+});

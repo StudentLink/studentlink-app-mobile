@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import { Ionicons } from '@expo/vector-icons';;
+import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../utils/colors';
 
 type Props = {
     data: Array<{ label: string, value: string }>
     onChange: ((item: { label: string, value: string }) => void)
-    icon : string,
+    icon: string,
 }
 
-const SingleSelectInput = ({data, onChange, icon} : Props) => {
+const SingleSelectInput = ({ data, onChange, icon }: Props) => {
     const [selected, setSelected] = useState('');
 
     const renderItem = item => {
@@ -24,7 +24,7 @@ const SingleSelectInput = ({data, onChange, icon} : Props) => {
                         name="checkmark"
                         size={25}
                     />
-                )}
+                )};
             </View>
         );
     };

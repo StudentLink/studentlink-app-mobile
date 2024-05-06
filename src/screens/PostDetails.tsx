@@ -1,21 +1,17 @@
-import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Colors } from '../utils/colors'
-import { useIsFocused, useNavigation, useRoute } from '@react-navigation/native'
-import PostType from '../data/customTypes/Post'
-import { formatDate } from '../data/FormatDate'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import BackButton from '../components/Button/BackButton'
-import * as SecureStore from 'expo-secure-store'
-import Comment from '../components/Comment'
-import { ScrollView, TextInput } from 'react-native-gesture-handler'
-import CommentType from '../data/customTypes/Comment'
-import { Ionicons } from '@expo/vector-icons/'
-import { CapitalizeData } from '../utils/verification'
-import City from '../data/customTypes/City'
-import CityJson from '../data/cities.json';
-import getLocalisationName from '../utils/getLocalisationName'
-
+import { StyleSheet, Text, View, Image, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Colors } from '../utils/colors';
+import { useIsFocused, useRoute } from '@react-navigation/native';
+import PostType from '../data/customTypes/Post';
+import { formatDate } from '../data/FormatDate';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import BackButton from '../components/Button/BackButton';
+import * as SecureStore from 'expo-secure-store';
+import Comment from '../components/Comment';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import CommentType from '../data/customTypes/Comment';
+import { Ionicons } from '@expo/vector-icons/';
+import getLocalisationName from '../utils/getLocalisationName';
 
 const PostDetails = () => {
 
@@ -41,7 +37,7 @@ const PostDetails = () => {
     } catch (error) {
       console.error(error)
     }
-  }
+  };
 
   const addComment = async () => {
     try {
@@ -61,7 +57,7 @@ const PostDetails = () => {
     } catch (error) {
       console.error(error)
     }
-  }
+  };
 
   useEffect(() => {
     if (isFocused) {
@@ -124,10 +120,10 @@ const PostDetails = () => {
         }
       </KeyboardAvoidingView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default PostDetails
+export default PostDetails;
 
 const styles = StyleSheet.create({
   container: {
@@ -233,4 +229,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-})
+});

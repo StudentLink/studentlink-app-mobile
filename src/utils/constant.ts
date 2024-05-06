@@ -5,13 +5,12 @@ export const Constant = {
   MARGIN_BOTTOM_SUBTITLE: 20,
 };
 
-
 export const ConstantLabel = {
-  PSEUDO: '',
-  PASSWORD: '',
-  CONFIRM_PASSWORD: '',
-  EMAIL: '',
-  PHONE: '',
-  FIRSTNAME: '',
-  LASTNAME: '',
-}
+  PSEUDO: "",
+  PASSWORD: "",
+  CONFIRM_PASSWORD: "",
+  EMAIL: "",
+  PHONE: "",
+  FIRSTNAME: "",
+  LASTNAME: "",
+};

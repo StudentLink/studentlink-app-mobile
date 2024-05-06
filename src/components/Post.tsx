@@ -1,6 +1,6 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Colors } from '../utils/colors'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Colors } from '../utils/colors';
 
 type Props = {
   content: string,
@@ -38,10 +38,10 @@ const Post = ({ content, name, username, profilePicture, schoolOrLocation, comme
         </TouchableOpacity>
       </View>
     </>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
 
 const styles = StyleSheet.create({
   container: {
@@ -103,4 +103,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   }
-})
+});

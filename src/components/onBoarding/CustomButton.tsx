@@ -1,5 +1,5 @@
-import { FlatList, StyleSheet, Text, TouchableWithoutFeedback, View, useWindowDimensions } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableWithoutFeedback, useWindowDimensions } from 'react-native';
+import React from 'react';
 import Animated, { AnimatedRef, SharedValue, interpolateColor, useAnimatedStyle, withSpring, withTiming } from 'react-native-reanimated';
 import { onBoardingInterface } from '../../data/onboarding';
 import { Ionicons } from '@expo/vector-icons';

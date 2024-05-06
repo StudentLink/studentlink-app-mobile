@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
-import React from 'react'
+import { StyleSheet, useWindowDimensions } from 'react-native';
+import React from 'react';
 import Animated, { Extrapolation, SharedValue, interpolate, interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 import { Colors } from '../../../utils/colors';
 
@@ -51,10 +51,10 @@ const Dot = ({ index, x }: Props) => {
     });
     return (
         <Animated.View style={[styles.dot, animatedDotStyle, animatedColor]} />
-    )
+    );
 }
 
-export default Dot
+export default Dot;
 
 const styles = StyleSheet.create({
     dot: {
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
     },
 
-})
+});

@@ -1,14 +1,13 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import { Colors } from '../utils/colors'
-import { Constant } from '../utils/constant'
-import CustomInput from '../components/CustomInput'
-import ButtonShadow from '../components/Button/ButtonShadow'
-import * as SecureStore from 'expo-secure-store'
-import { useNavigation } from '@react-navigation/native'
-import { ValidateDataLogin } from '../utils/verification'
-import BackButton from '../components/Button/BackButton'
-
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Colors } from '../utils/colors';
+import { Constant } from '../utils/constant';
+import CustomInput from '../components/CustomInput';
+import ButtonShadow from '../components/Button/ButtonShadow';
+import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from '@react-navigation/native';
+import { ValidateDataLogin } from '../utils/verification';
+import BackButton from '../components/Button/BackButton';
 
 const Login = () => {
 
@@ -39,7 +38,7 @@ const Login = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     return (
         <View style={styles.container}>
@@ -55,8 +54,8 @@ const Login = () => {
                 }} />
             </KeyboardAvoidingView>
         </View>
-    )
-}
+    );
+};
 
 export default Login
 
@@ -78,4 +77,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: Constant.MARGIN_BOTTOM_TITLE,
     },
-})
+});

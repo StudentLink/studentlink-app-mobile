@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
-import React from 'react'
-import { onBoardingInterface } from '../../data/onboarding'
+import { StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import React from 'react';
+import { onBoardingInterface } from '../../data/onboarding';
 import LottieView from 'lottie-react-native';
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated';
 
@@ -23,11 +23,11 @@ const RenderItem = ({ item, index, x }: Props) => {
             ],
             [200, 0, -200],
             Extrapolation.CLAMP,
-        )
+        );
         return {
-            transform : [{translateY : translateYAnimation}],
+            transform: [{ translateY: translateYAnimation }],
         }
-    })
+    });
 
     const circleAnimation = useAnimatedStyle(() => {
         const scale = interpolate(
@@ -69,8 +69,8 @@ const RenderItem = ({ item, index, x }: Props) => {
             </Animated.View>
             <Text style={[styles.itemText, { color: item.textColor }]}>{item.text}</Text>
         </View>
-    )
-}
+    );
+};
 
 export default RenderItem;
 
@@ -92,4 +92,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
     }
-})
+});

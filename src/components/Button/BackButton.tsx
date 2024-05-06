@@ -1,5 +1,5 @@
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import { Colors } from '../../utils/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
@@ -14,10 +14,10 @@ const BackButton = () => {
                 <Ionicons name="arrow-back" size={24} color={Colors.WHITE} />
             </TouchableOpacity>
         </View>
-    )
-}
+    );
+};
 
-export default BackButton
+export default BackButton;
 
 const styles = StyleSheet.create({
     container: {
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
         left: 20,
         zIndex: 100,
     }
-})
+});

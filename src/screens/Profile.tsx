@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator, ScrollView } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import * as SecureStore from 'expo-secure-store'
-import { jwtDecode } from "jwt-decode";
+import { StyleSheet, Text, View, Image, ActivityIndicator, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import * as SecureStore from 'expo-secure-store';
 import "core-js/stable/atob";
 import { Colors } from '../utils/colors';
 import Post from '../components/Post';
@@ -13,10 +12,9 @@ import CityJson from '../data/cities.json';
 import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
-
 
 const Profile = () => {
 
@@ -48,7 +46,7 @@ const Profile = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const getProfilePicture = async () => {
         if (user) {
@@ -57,7 +55,7 @@ const Profile = () => {
             const picture = URL.createObjectURL(blob);
             setProfilePicture(picture);
         }
-    }
+    };
 
     const getUserPosts = async () => {
         const token = decodeToken();
@@ -76,7 +74,7 @@ const Profile = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const getLocations = async () => {
         if (user) {
@@ -93,7 +91,7 @@ const Profile = () => {
                 setLocations(data);
             }
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
@@ -151,9 +149,9 @@ const Profile = () => {
             </View>
         );
     }
-}
+};
 
-export default Profile
+export default Profile;
 
 const styles = StyleSheet.create({
     container: {
@@ -191,4 +189,4 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         marginBottom: 55,
     }
-})
+});

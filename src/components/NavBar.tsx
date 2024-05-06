@@ -1,6 +1,6 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { Colors } from '../utils/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -43,10 +43,10 @@ const NavBar = ({ state, navigation }: BottomTabBarProps) => {
                 ))}
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default NavBar
+export default NavBar;
 
 const styles = StyleSheet.create({
     navbarContainer: {
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
         color: Colors.WHITE,
         fontSize: 15,
     }
-})
+});

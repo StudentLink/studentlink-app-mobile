@@ -1,15 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import ButtonShadow from '../components/Button/ButtonShadow';
 import { Constant } from '../utils/constant';
 import { Colors } from '../utils/colors';
-import citiesData from '../data/cities.json'
+import citiesData from '../data/cities.json';
 import { CapitalizeData, ValidateDataSchoolAndLocalization } from '../utils/verification';
 import MultiSelectInput from '../components/selectInput/MultiSelectInput';
 import SingleSelectInput from '../components/selectInput/singleSelectInput';
 import SchoolType from '../data/customTypes/School';
-import * as SecureStore from 'expo-secure-store'
-import { jwtDecode } from 'jwt-decode';
+import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Button/BackButton';
 import decodeToken from '../utils/decodeToken';
@@ -30,7 +29,7 @@ const RegisterSchoolAndLocalization = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     const setLocalisationsAndSchoolforUser = async () => {
         const token = decodeToken();
@@ -57,7 +56,7 @@ const RegisterSchoolAndLocalization = () => {
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
     useEffect(() => {
         getSchoolData();

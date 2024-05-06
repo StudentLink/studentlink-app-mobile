@@ -1,19 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { Colors } from '../utils/colors'
-import BackButton from '../components/Button/BackButton'
-import { useIsFocused, useNavigation } from '@react-navigation/native'
-import SettingsBoxTwoInput from '../components/settingsBoxTwoInput'
-import SettingsBoxOneInput from '../components/settingsBoxOneInput'
-import { ScrollView } from 'react-native-gesture-handler'
-import * as SecureStore from 'expo-secure-store'
-import { jwtDecode } from 'jwt-decode'
-import User from '../data/customTypes/User'
-import { ValidateDataUpdate } from '../utils/verification'
-import ButtonShadow from '../components/Button/ButtonShadow'
-import decodeToken from '../utils/decodeToken'
-
+import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Colors } from '../utils/colors';
+import BackButton from '../components/Button/BackButton';
+import { useIsFocused } from '@react-navigation/native';
+import SettingsBoxTwoInput from '../components/settingsBoxTwoInput';
+import SettingsBoxOneInput from '../components/settingsBoxOneInput';
+import { ScrollView } from 'react-native-gesture-handler';
+import * as SecureStore from 'expo-secure-store';
+import User from '../data/customTypes/User';
+import { ValidateDataUpdate } from '../utils/verification';
+import ButtonShadow from '../components/Button/ButtonShadow';
+import decodeToken from '../utils/decodeToken';
 
 const Settings = () => {
 
@@ -44,7 +42,7 @@ const Settings = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     const updateUser = async () => {
         const token = decodeToken();
@@ -72,13 +70,13 @@ const Settings = () => {
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     useEffect(() => {
         if (isFocused) {
             getUserConnected();
         }
-    }, [])
+    }, []);
 
     if (user) {
         const [firstnameUser, lastnameUser] = user.name.split(' ',)
@@ -105,8 +103,7 @@ const Settings = () => {
             </SafeAreaView>
         )
     }
-
-}
+};
 
 export default Settings;
 
@@ -129,4 +126,4 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginTop: 20
     },
-})
+});
