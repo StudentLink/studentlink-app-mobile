@@ -12,6 +12,7 @@ import * as SecureStore from 'expo-secure-store'
 import { jwtDecode } from 'jwt-decode';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Button/BackButton';
+import decodeToken from '../utils/decodeToken';
 
 const RegisterSchoolAndLocalization = () => {
 
@@ -20,15 +21,6 @@ const RegisterSchoolAndLocalization = () => {
     const [localisations, setLocalisations] = useState<string[]>([""]);
     const [school, setSchool] = useState<{ label: string, value: string }[]>([{ label: "", value: "" }]);
     const [schoolData, setSchoolData] = useState<string>('');
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getSchoolData = async () => {
         try {

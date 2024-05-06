@@ -8,6 +8,7 @@ import Post from '../components/Post';
 import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
 import { useNavigation } from '@react-navigation/native';
+import decodeToken from '../utils/decodeToken';
 
 const FeedSchools = () => {
 
@@ -15,15 +16,6 @@ const FeedSchools = () => {
     const [posts, setPosts] = useState<PostType[]>();
 
     const navigation = useNavigation();
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getUserConnected = async () => {
         const token = decodeToken();

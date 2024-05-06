@@ -11,6 +11,7 @@ import { CapitalizeData } from '../utils/verification';
 import City from '../data/customTypes/City';
 import CityJson from '../data/cities.json';
 import { useNavigation } from '@react-navigation/native';
+import decodeToken from '../utils/decodeToken';
 
 const FeedLocations = () => {
 
@@ -18,15 +19,6 @@ const FeedLocations = () => {
     const [posts, setPosts] = useState<PostType[]>();
 
     const navigation = useNavigation();
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getUserConnected = async () => {
         const token = decodeToken();

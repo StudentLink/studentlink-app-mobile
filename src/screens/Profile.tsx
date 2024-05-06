@@ -14,6 +14,7 @@ import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons'
+import decodeToken from '../utils/decodeToken';
 
 
 const Profile = () => {
@@ -24,15 +25,6 @@ const Profile = () => {
     const [locations, setLocations] = useState<string[]>([]);
 
     const navigation = useNavigation();
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getUserConnected = async () => {
         const token = decodeToken();

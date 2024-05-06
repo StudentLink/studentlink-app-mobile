@@ -12,6 +12,7 @@ import { jwtDecode } from 'jwt-decode'
 import User from '../data/customTypes/User'
 import { ValidateDataUpdate } from '../utils/verification'
 import ButtonShadow from '../components/Button/ButtonShadow'
+import decodeToken from '../utils/decodeToken'
 
 
 const Settings = () => {
@@ -23,16 +24,6 @@ const Settings = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getUserConnected = async () => {
         const token = decodeToken();

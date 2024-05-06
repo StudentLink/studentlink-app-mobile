@@ -10,6 +10,7 @@ import City from '../data/customTypes/City'
 import CityJson from '../data/cities.json'
 import { CapitalizeData } from '../utils/verification'
 import ButtonShadow from '../components/Button/ButtonShadow'
+import decodeToken from '../utils/decodeToken'
 
 const AddPosts = () => {
 
@@ -20,15 +21,6 @@ const AddPosts = () => {
     const [postSchool, setPostSchool] = useState<number | null>(null);
     const [postContent, setPostContent] = useState<string>('');
     const [postSuccess, setPostSuccess] = useState<boolean>(false);
-
-    const decodeToken = () => {
-        const token = SecureStore.getItem('token');
-        if (token) {
-            const tokenDecode = jwtDecode(token);
-            return tokenDecode;
-        }
-        return null;
-    }
 
     const getUserConnected = async () => {
         const token = decodeToken();
