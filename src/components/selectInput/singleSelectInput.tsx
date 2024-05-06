@@ -41,8 +41,8 @@ const SingleSelectInput = ({data, onChange, icon} : Props) => {
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder="Select item"
-            searchPlaceholder="Search..."
+            placeholder="Choisis ton école"
+            searchPlaceholder="Recherche ton école..."
             value={selected}
             onChange={item => {
                 onChange(item);

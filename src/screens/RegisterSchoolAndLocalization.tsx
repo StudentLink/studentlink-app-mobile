@@ -87,7 +87,7 @@ const RegisterSchoolAndLocalization = () => {
                 ))}
             />
             <ButtonShadow
-                label='Suivant'
+                label='Valider'
                 onClick={() => {
                     if (ValidateDataSchoolAndLocalization(localisations, schoolData)) {
                         setLocalisationsAndSchoolforUser();

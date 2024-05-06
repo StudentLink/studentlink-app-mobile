@@ -88,7 +88,7 @@ const CustomButton = ({ flatListRef, flatListIndex, datalength, x, navigate}: Pr
             }}
         >
             <Animated.View style={[styles.container, animatedColor, buttonAnimationStyle]}>
-                <Animated.Text style={[styles.textButton, textAnimationStyle]}>Get Started</Animated.Text>
+                <Animated.Text style={[styles.textButton, textAnimationStyle]}>C'est parti !</Animated.Text>
                 <AnimatedIcon name="arrow-forward" size={30} style={[styles.arrow, arrowAnimationStyle, AnimatedIonicons]} />
             </Animated.View>
         </TouchableWithoutFeedback>

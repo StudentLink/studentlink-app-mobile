@@ -14,11 +14,11 @@ const HomeBottomTab = () => {
             <Tabs.Navigator screenOptions={{ headerShown: false, }} tabBar={(props) => {
                 return <NavBar {...props} />
             }}>
-                <Tabs.Screen name="Home" component={HomePage} />
-                <Tabs.Screen name="School" component={FeedSchools} />
-                <Tabs.Screen name="Add" component={AddPosts} />
-                <Tabs.Screen name="Locations" component={FeedLocations} />
-                <Tabs.Screen name="Profile" component={Profile} />
+                <Tabs.Screen name="Accueil" component={HomePage} />
+                <Tabs.Screen name="Ecole" component={FeedSchools} />
+                <Tabs.Screen name="Ajouter" component={AddPosts} />
+                <Tabs.Screen name="Lieux" component={FeedLocations} />
+                <Tabs.Screen name="Profil" component={Profile} />
             </Tabs.Navigator>
     );
 }

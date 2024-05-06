@@ -35,7 +35,7 @@ const MultiSelectInput = ({ data, onChange }: Props) => {
                 value={selected}
                 search
                 activeColor={Colors.BLUE}
-                searchPlaceholder="Search..."
+                searchPlaceholder="Recherche ta ou tes villes..."
                 onChange={items => {
                     onChange(items);
                     setSelected(items);

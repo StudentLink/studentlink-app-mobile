@@ -52,13 +52,13 @@ const Register = () => {
             <BackButton />
             <KeyboardAvoidingView behavior='padding' style={styles.keyboarAvoiding}>
                 <ScrollView style={styles.scroll}>
-                    <Text style={styles.title}>Create Account</Text>
+                    <Text style={styles.title}>Créons ton compte !</Text>
                     <CustomInput label='Prénom' onChange={setFirstname} icon='person-outline' />
                     <CustomInput label='Nom' onChange={setLastname} icon='person-outline' />
                     <CustomInput label='Pseudonyme' onChange={setUsername} icon='person-outline' />
                     <CustomInput label='Email' onChange={setEmail} icon='at' />
-                    <CustomInput label='Password' onChange={setPassword} icon='lock-closed-outline' />
-                    <CustomInput label='Confirm password' onChange={setConfirmPassword} icon='lock-closed-outline' />
+                    <CustomInput label='Mot de passe' onChange={setPassword} icon='lock-closed-outline' />
+                    <CustomInput label='Confirmation' onChange={setConfirmPassword} icon='lock-closed-outline' />
                 </ScrollView>
                 <ButtonShadow
                     label='Suivant'
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         fontSize: Constant.TITLE_SIZE,
         textAlign: 'center',
-        marginBottom: Constant.MARGIN_BOTTOM_TITLE,
+        marginBottom: 50,
     },
     subtitle: {
         color: Colors.WHITE,

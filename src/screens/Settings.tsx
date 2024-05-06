@@ -92,16 +92,16 @@ const Settings = () => {
         return (
             <SafeAreaView style={styles.container}>
                 <BackButton />
-                <Text style={{ color: Colors.WHITE, fontSize: 40, fontWeight: '800', marginBottom: 20 }}>Settings</Text>
+                <Text style={{ color: Colors.WHITE, fontSize: 40, fontWeight: '800', marginBottom: 20 }}>Modifier</Text>
                 <ScrollView style={styles.scroll}>
                     <View style={{ flex: 1, alignItems: 'center' }}>
-                        <SettingsBoxOneInput title='Username' label={user.username} onChange={setUsername} />
-                        <SettingsBoxTwoInput title='Name' labelOne={firstnameUser} labelTwo={lastnameUser} onChangeOne={setFirstname} onChangeTwo={setLastname} />
+                        <SettingsBoxOneInput title='Pseudo' label={user.username} onChange={setUsername} />
+                        <SettingsBoxTwoInput title='Nom & Prénom' labelOne={firstnameUser} labelTwo={lastnameUser} onChangeOne={setFirstname} onChangeTwo={setLastname} />
                         <SettingsBoxOneInput title='Email' label={user.email} onChange={setEmail} />
-                        <SettingsBoxTwoInput title='Password' labelOne='New password' labelTwo='Confirm new password' onChangeOne={setPassword} onChangeTwo={setConfirmPassword} />
+                        <SettingsBoxTwoInput title='Mot de passe' labelOne='Nouveau mot de passe' labelTwo='Confirmation' onChangeOne={setPassword} onChangeTwo={setConfirmPassword} />
                     </View>
                 </ScrollView>
-                <ButtonShadow label='Save' onClick={() => {
+                <ButtonShadow label='Enregistrer' onClick={() => {
                     if (ValidateDataUpdate(email, password, confirmPassword)) {
                         updateUser()
                     }

@@ -45,10 +45,10 @@ const Login = () => {
         <View style={styles.container}>
             <BackButton />
             <KeyboardAvoidingView behavior='padding'>
-                <Text style={styles.title}>Login</Text>
+                <Text style={styles.title}>Connecte toi !</Text>
                 <CustomInput label="Email" icon='at' onChange={setEmail} />
-                <CustomInput label="Password" icon='lock-closed-outline' onChange={setPassword} />
-                <ButtonShadow label='Login' onClick={() => {
+                <CustomInput label="Mot de passe" icon='lock-closed-outline' onChange={setPassword} />
+                <ButtonShadow label='Connexion' onClick={() => {
                     if (ValidateDataLogin(email, password)) {
                         loginUser();
                     }

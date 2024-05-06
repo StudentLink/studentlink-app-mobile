@@ -17,15 +17,15 @@ const NavBar = ({ state, navigation }: BottomTabBarProps) => {
 
     const getTabIcon = (name: string, isFocused: boolean) => {
         switch (name) {
-            case 'Home':
+            case 'Accueil':
                 return <Ionicons name={isFocused ? 'home' : 'home-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'Profile':
+            case 'Profil':
                 return <Ionicons name={isFocused ? 'person' : 'person-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'School':
+            case 'Ecole':
                 return <Ionicons name={isFocused ? 'school' : 'school-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'Locations':
+            case 'Lieux':
                 return <Ionicons name={isFocused ? 'location' : 'location-outline'} size={30} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
-            case 'Add':
+            case 'Ajouter':
                 return <Ionicons name={isFocused ? 'add-circle' : 'add-circle-outline'} size={50} color={isFocused ? Colors.BLUE : Colors.WHITE} />;
             default:
                 return null;
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingHorizontal: 20,
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         gap: 15,
     },
