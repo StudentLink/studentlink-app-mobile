@@ -15,6 +15,7 @@ import { CapitalizeData } from '../utils/verification';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons'
 import decodeToken from '../utils/decodeToken';
+import getLocalisationName from '../utils/getLocalisationName';
 
 
 const Profile = () => {
@@ -91,14 +92,6 @@ const Profile = () => {
                 setLocations(data);
             }
         }
-    }
-
-    const getLocalisationName = (inseeCode: number) => {
-        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
-        if (result) {
-            return CapitalizeData(result.label);
-        }
-        return 'N/A';
     }
 
     useEffect(() => {

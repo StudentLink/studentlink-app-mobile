@@ -11,6 +11,7 @@ import City from '../data/customTypes/City';
 import { CapitalizeData } from '../utils/verification';
 import CityJson from '../data/cities.json';
 import { useNavigation } from '@react-navigation/native';
+import getLocalisationName from '../utils/getLocalisationName';
 
 
 const HomePage = () => {
@@ -31,14 +32,6 @@ const HomePage = () => {
         } catch (error) {
             console.error(error)
         }
-    }
-
-    const getLocalisationName = (inseeCode: number) => {
-        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
-        if (result) {
-            return CapitalizeData(result.label);
-        }
-        return 'N/A';
     }
 
     useEffect(() => {

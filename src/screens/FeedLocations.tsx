@@ -12,6 +12,7 @@ import City from '../data/customTypes/City';
 import CityJson from '../data/cities.json';
 import { useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
+import getLocalisationName from '../utils/getLocalisationName';
 
 const FeedLocations = () => {
 
@@ -55,14 +56,6 @@ const FeedLocations = () => {
         } catch (error) {
             console.error(error)
         }
-    }
-
-    const getLocalisationName = (inseeCode: number) => {
-        const result = (CityJson as City[]).find((city) => (parseInt(city.insee_code) == inseeCode));
-        if (result) {
-            return CapitalizeData(result.label);
-        }
-        return 'N/A';
     }
 
     useEffect(() => {
