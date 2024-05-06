@@ -74,7 +74,6 @@ const Settings = () => {
                 })
             });
             const json = await response.json();
-            console.log(json);
             if (json.message) {
                 alert(json.message)
                 return;

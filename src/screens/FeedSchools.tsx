@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import PostType from '../data/customTypes/Post';
 import User from '../data/customTypes/User';
@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 const FeedSchools = () => {
 
     const [user, setUser] = useState<User | null>(null);
-    const [posts, setPosts] = useState<PostType[]>([]);
+    const [posts, setPosts] = useState<PostType[]>();
 
     const navigation = useNavigation();
 
@@ -71,46 +71,57 @@ const FeedSchools = () => {
     }, [user])
 
     if (posts) {
+        if (posts.length >= 1) {
+            return (
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
+                    </View>
+                    <ScrollView style={styles.scroll}>
+                        {
+
+                            posts.map((post, index) => (
+                                <Post
+                                    key={index}
+                                    content={post.content}
+                                    name={post.user.name}
+                                    username={post.user.username}
+                                    schoolOrLocation={post.school ? post.school.name : ''}
+                                    comments={post.comments}
+                                    date={formatDate(post.createdAt)}
+                                    profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
+                                    onClick={() => { navigation.navigate('PostDetails', { post: post }) }}
+                                />
+                            ))
+                        }
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        }
+        else if (posts.length === 0) {
+            return (
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
+                    </View>
+                    <ScrollView style={styles.scroll}>
+                        <Text style={{ color: Colors.WHITE, opacity: 0.5 }}>Aucun post</Text>
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        }
+    } else {
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
                     <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
                 </View>
                 <ScrollView style={styles.scroll}>
-                    {
-
-                        posts.map((post, index) => (
-                            <Post
-                                key={index}
-                                content={post.content}
-                                name={post.user.name}
-                                username={post.user.username}
-                                schoolOrLocation={post.school ? post.school.name : ''}
-                                comments={post.comments}
-                                date={formatDate(post.createdAt)}
-                                profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
-                                onClick={() => { navigation.navigate('PostDetails', {post: post})}}
-                            />
-                        ))
-                    }
+                    <ActivityIndicator size={70} color={Colors.BLUE} />
                 </ScrollView>
             </SafeAreaView>
         );
     }
-    else {
-        return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.header}>
-                    <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
-                </View>
-                <ScrollView style={styles.scroll}>
-                    <Text style={{ color: Colors.WHITE }}>Aucun post</Text>
-                </ScrollView>
-            </SafeAreaView>
-        );
-
-    }
-
 }
 
 export default FeedSchools

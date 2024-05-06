@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image } from 'react-native'
+import { StyleSheet, View, Image, ActivityIndicator, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
 import { Colors } from '../utils/colors';
@@ -14,13 +14,12 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const HomePage = () => {
-
-    const [posts, setPosts] = useState<PostType[]>([]);
+    const [posts, setPosts] = useState<PostType[]>();
     const navigation = useNavigation();
 
     const getPosts = async () => {
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/posts`, {
+            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/feed`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,27 +46,52 @@ const HomePage = () => {
     }, []);
 
     if (posts) {
+        if (posts.length >= 1) {
+            return (
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
+                    </View>
+                    <ScrollView style={styles.scroll}>
+                        {
+                            posts.map((post, index) => (
+                                <Post
+                                    key={index}
+                                    content={post.content}
+                                    name={post.user.name}
+                                    username={post.user.username}
+                                    schoolOrLocation={post.school ? post.school.name : getLocalisationName(post.location)}
+                                    comments={post.comments}
+                                    date={formatDate(post.createdAt)}
+                                    profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
+                                    onClick={() => { navigation.navigate('PostDetails', { post: post }) }}
+                                />
+                            ))
+                        }
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        } else {
+            return (
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
+                    </View>
+                    <ScrollView style={styles.scroll}>
+                        <Text style={{ color: Colors.WHITE, opacity: 0.5 }}>Aucun post</Text>
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        }
+    } else {
+
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
                     <Image source={require('../assets/images/studentlink-logo-white.png')} style={styles.logo} />
                 </View>
                 <ScrollView style={styles.scroll}>
-                    {
-                        posts.map((post, index) => (
-                            <Post
-                                key={index}
-                                content={post.content}
-                                name={post.user.name}
-                                username={post.user.username}
-                                schoolOrLocation={post.school ? post.school.name : getLocalisationName(post.location)}
-                                comments={post.comments}
-                                date={formatDate(post.createdAt)}
-                                profilePicture={`https://ui-avatars.com/api/?format=png&size=512&rounded=true&name=${post.user.name.replaceAll(/[ -'_]+/g, '+')}`}
-                                onClick={() => { navigation.navigate('PostDetails', {post: post})}}
-                            />
-                        ))
-                    }
+                    <ActivityIndicator size={70} color={Colors.BLUE} />
                 </ScrollView>
             </SafeAreaView>
         );
