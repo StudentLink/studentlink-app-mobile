@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { Colors } from '../utils/colors'
 import { Constant } from '../utils/constant'
@@ -44,14 +44,16 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <BackButton onclick={() => { navigation.navigate('Authentication') }} />
-            <Text style={styles.title}>Login</Text>
-            <CustomInput label="Email" icon='at' onChange={setEmail} />
-            <CustomInput label="Password" icon='lock-closed-outline' onChange={setPassword} />
-            <ButtonShadow label='Login' onClick={() => {
-                if (ValidateDataLogin(email, password)) {
-                    loginUser();
-                }
-            }} />
+            <KeyboardAvoidingView behavior='padding'>
+                <Text style={styles.title}>Login</Text>
+                <CustomInput label="Email" icon='at' onChange={setEmail} />
+                <CustomInput label="Password" icon='lock-closed-outline' onChange={setPassword} />
+                <ButtonShadow label='Login' onClick={() => {
+                    if (ValidateDataLogin(email, password)) {
+                        loginUser();
+                    }
+                }} />
+            </KeyboardAvoidingView>
         </View>
     )
 }

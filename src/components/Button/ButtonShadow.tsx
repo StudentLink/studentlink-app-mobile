@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 1,
         borderRadius: 10,
+        marginBottom: 20,
     },
     label : {
         color: Colors.WHITE,

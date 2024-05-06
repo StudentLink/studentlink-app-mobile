@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { Constant } from '../utils/constant';
 import CustomInput from '../components/CustomInput';
@@ -8,6 +8,7 @@ import { Colors } from '../utils/colors';
 import { CapitalizeData, ValidateDataRegister } from '../utils/verification';
 import * as SecureStore from 'expo-secure-store'
 import BackButton from '../components/Button/BackButton';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Register = () => {
     const navigation = useNavigation();
@@ -47,23 +48,27 @@ const Register = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <BackButton onclick={() => { navigation.navigate('Authentication') }} />
-            <Text style={styles.title}>Create Account</Text>
-            <CustomInput label='Prénom' onChange={setFirstname} icon='person-outline' />
-            <CustomInput label='Nom' onChange={setLastname} icon='person-outline' />
-            <CustomInput label='Pseudonyme' onChange={setUsername} icon='person-outline' />
-            <CustomInput label='Email' onChange={setEmail} icon='at' />
-            <CustomInput label='Password' onChange={setPassword} icon='lock-closed-outline' />
-            <CustomInput label='Confirm password' onChange={setConfirmPassword} icon='lock-closed-outline' />
-            <ButtonShadow
-                label='Suivant'
-                onClick={() => {
-                    if (ValidateDataRegister(firstname, lastname, username, email, password, confirmPassword)) {
-                        registerUser();
-                    }
-                }} />
-        </View>
+            <KeyboardAvoidingView behavior='padding' style={styles.keyboarAvoiding}>
+                <ScrollView style={styles.scroll}>
+                    <Text style={styles.title}>Create Account</Text>
+                    <CustomInput label='Prénom' onChange={setFirstname} icon='person-outline' />
+                    <CustomInput label='Nom' onChange={setLastname} icon='person-outline' />
+                    <CustomInput label='Pseudonyme' onChange={setUsername} icon='person-outline' />
+                    <CustomInput label='Email' onChange={setEmail} icon='at' />
+                    <CustomInput label='Password' onChange={setPassword} icon='lock-closed-outline' />
+                    <CustomInput label='Confirm password' onChange={setConfirmPassword} icon='lock-closed-outline' />
+                </ScrollView>
+                <ButtonShadow
+                    label='Suivant'
+                    onClick={() => {
+                        if (ValidateDataRegister(firstname, lastname, username, email, password, confirmPassword)) {
+                            registerUser();
+                        }
+                    }} />
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 };
 
@@ -86,6 +91,17 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: Constant.SUBTITLE_SIZE,
         marginBottom: Constant.MARGIN_BOTTOM_SUBTITLE,
+    },
+    scroll: {
+        flex: 1,
+        width: '100%',
+    },
+    keyboarAvoiding : {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        padding: 20,
     }
 });
 
