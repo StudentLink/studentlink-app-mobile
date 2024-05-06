@@ -49,7 +49,7 @@ const Register = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <BackButton onclick={() => { navigation.navigate('Authentication') }} />
+            <BackButton />
             <KeyboardAvoidingView behavior='padding' style={styles.keyboarAvoiding}>
                 <ScrollView style={styles.scroll}>
                     <Text style={styles.title}>Create Account</Text>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
-    keyboarAvoiding : {
+    keyboarAvoiding: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',

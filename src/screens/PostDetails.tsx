@@ -76,7 +76,7 @@ const PostDetails = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <BackButton onclick={() => navigation.goBack()} />
+      <BackButton />
       <KeyboardAvoidingView behavior="padding" style={{ flex: 1, width: "100%" }}>
         <View style={styles.post}>
           <View style={styles.userInfo}>

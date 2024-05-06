@@ -43,7 +43,7 @@ const Login = () => {
 
     return (
         <View style={styles.container}>
-            <BackButton onclick={() => { navigation.navigate('Authentication') }} />
+            <BackButton />
             <KeyboardAvoidingView behavior='padding'>
                 <Text style={styles.title}>Login</Text>
                 <CustomInput label="Email" icon='at' onChange={setEmail} />

@@ -92,7 +92,7 @@ const Settings = () => {
         const [firstnameUser, lastnameUser] = user.name.split(' ',)
         return (
             <SafeAreaView style={styles.container}>
-                <BackButton onclick={() => { navigation.goBack() }} />
+                <BackButton />
                 <Text style={{ color: Colors.WHITE, fontSize: 40, fontWeight: '800', marginBottom: 20 }}>Settings</Text>
                 <ScrollView style={styles.scroll}>
                     <View style={{ flex: 1, alignItems: 'center' }}>

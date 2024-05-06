@@ -1,16 +1,16 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Colors } from '../../utils/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
-type Props = {
-    onclick: () => void;
-}
+const BackButton = () => {
 
-const BackButton = ({ onclick }: Props) => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={onclick}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={24} color={Colors.WHITE} />
             </TouchableOpacity>
         </View>
