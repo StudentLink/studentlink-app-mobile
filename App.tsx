@@ -14,7 +14,6 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-  const token = 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
