@@ -86,12 +86,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 50,
     },
-    subtitle: {
-        color: Colors.WHITE,
-        fontWeight: '600',
-        fontSize: Constant.SUBTITLE_SIZE,
-        marginBottom: Constant.MARGIN_BOTTOM_SUBTITLE,
-    },
     scroll: {
         flex: 1,
         width: '100%',

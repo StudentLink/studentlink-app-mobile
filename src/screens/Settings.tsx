@@ -119,11 +119,4 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
     },
-    button: {
-        backgroundColor: Colors.BLUE,
-        paddingVertical: 20,
-        paddingHorizontal: 100,
-        borderRadius: 10,
-        marginTop: 20
-    },
 });

@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
         width: 300,
         height: 50,
     },
-
     textInput: {
         paddingHorizontal: 15,
         paddingVertical: 10,
@@ -59,4 +58,4 @@ const styles = StyleSheet.create({
         width: 250,
         height: 50,
     }
-})
+});

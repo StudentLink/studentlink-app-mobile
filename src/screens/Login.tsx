@@ -66,10 +66,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    image: {
-        width: 350,
-        height: 140,
-    },
     title: {
         color: Colors.BLUE,
         fontWeight: '900',

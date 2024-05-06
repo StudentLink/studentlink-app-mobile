@@ -149,19 +149,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 10,
     },
-    button: {
-        backgroundColor: Colors.BLUE,
-        padding: 20,
-        paddingHorizontal: 120,
-        borderRadius: 10,
-        marginVertical: 20,
-        marginBottom: 50,
-    },
-    buttonText: {
-        color: Colors.WHITE,
-        fontSize: 30,
-        fontWeight: '800',
-    },
     success: {
         color: Colors.GREEN,
         fontSize: 20,

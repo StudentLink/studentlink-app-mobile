@@ -102,12 +102,6 @@ const styles = StyleSheet.create({
         fontSize: Constant.TITLE_SIZE,
         textAlign: 'center',
     },
-    subtitle: {
-        color: Colors.WHITE,
-        fontWeight: '600',
-        fontSize: Constant.SUBTITLE_SIZE,
-        marginBottom: Constant.MARGIN_BOTTOM_SUBTITLE,
-    }
 });
 
 export default RegisterSchoolAndLocalization;
