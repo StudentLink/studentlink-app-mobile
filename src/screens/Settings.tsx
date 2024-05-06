@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colors } from '../utils/colors'
@@ -6,12 +6,12 @@ import BackButton from '../components/Button/BackButton'
 import { useNavigation } from '@react-navigation/native'
 import SettingsBoxTwoInput from '../components/settingsBoxTwoInput'
 import SettingsBoxOneInput from '../components/settingsBoxOneInput'
-import CustomInput from '../components/CustomInput'
 import { ScrollView } from 'react-native-gesture-handler'
 import * as SecureStore from 'expo-secure-store'
 import { jwtDecode } from 'jwt-decode'
 import User from '../data/customTypes/User'
-import { ValidateDataRegister, ValidateDataUpdate } from '../utils/verification'
+import { ValidateDataUpdate } from '../utils/verification'
+import ButtonShadow from '../components/Button/ButtonShadow'
 
 
 const Settings = () => {
@@ -101,13 +101,11 @@ const Settings = () => {
                         <SettingsBoxTwoInput title='Password' labelOne='New password' labelTwo='Confirm new password' onChangeOne={setPassword} onChangeTwo={setConfirmPassword} />
                     </View>
                 </ScrollView>
-                <TouchableOpacity style={styles.button} onPress={() => {
+                <ButtonShadow label='Save' onClick={() => {
                     if (ValidateDataUpdate(email, password, confirmPassword)) {
                         updateUser()
                     }
-                }}>
-                    <Text style={{ color: Colors.WHITE, fontSize: 20 }}>Save</Text>
-                </TouchableOpacity>
+                }} />
             </SafeAreaView>
         )
     }

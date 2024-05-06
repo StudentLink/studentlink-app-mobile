@@ -9,7 +9,7 @@ import SingleSelectInput from '../components/selectInput/singleSelectInput'
 import City from '../data/customTypes/City'
 import CityJson from '../data/cities.json'
 import { CapitalizeData } from '../utils/verification'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import ButtonShadow from '../components/Button/ButtonShadow'
 
 const AddPosts = () => {
 
@@ -108,9 +108,7 @@ const AddPosts = () => {
                         <CustomRadioButton label='Ville' selected={selectedValue === 'Ville'} onSelected={() => { setSelectedValue('Ville'); setPostSchool(null); }} />
                     </View >
                     {selectedValue === 'Ville' ? <SingleSelectInput data={localisations} icon='location-outline' onChange={({ value }) => setPostLocation(value)} /> : null}
-                    <TouchableOpacity style={styles.button} onPress={addPost}>
-                        <Text style={styles.buttonText}>Publier</Text>
-                    </TouchableOpacity>
+                    <ButtonShadow label='Publier' onClick={addPost} />
                     {postSuccess ? <Text style={styles.success}>Post publié avec succès</Text> : null}
                 </KeyboardAvoidingView>
             </SafeAreaView >
