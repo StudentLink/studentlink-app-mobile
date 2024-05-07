@@ -23,17 +23,14 @@
 
 Cette application est entièrement développée avec le framework React Native et Expo Go
 
-<img title="react native" src='./images/react-native-logo.png' width='50'>
-<img title="expo go" src='./images/expo-go-app.svg' width='50'>
-
 ## II. Installation
 
 ### 3. Prérequis
 
 Pour l'installation du projet/application, vous aurez besoin de :
 
-- Git <img title="git" src='./images/Git_icon.png' width='20'>
-- NodeJS <img title="nodejs" src='./images/2560px-Node.js_logo.png' width='50'>
+- Git 
+- NodeJS 
 
 ### 2. Cloner le projet
 
