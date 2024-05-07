@@ -12,11 +12,11 @@
 
 - [I. Présentation](#i-présentation)
 - [II. Installation](#ii-installation)
-    - [1. Prérequis](#1-Prérequis)
-    - [2. Cloner le projet](#2-cloner-le-projet)
-    - [3. Variable d'environnement](#3-variable-d-environnement)
-    - [4. Installation du projet](#4-installation-du-projet)
-    - [5. Lancement de l'application](#5-lancement-de-l-application)
+  - [1. Prérequis](#1-Prérequis)
+  - [2. Cloner le projet](#2-cloner-le-projet)
+  - [3. Variable d'environnement](#3-variable-d-environnement)
+  - [4. Installation du projet](#4-installation-du-projet)
+  - [5. Lancement de l'application](#5-lancement-de-l-application)
 - [III. Utilisation de l'application](#iii-utilisation-de-l-application)
 
 ## I. Présentation
@@ -30,7 +30,7 @@ Cette application est entièrement développée avec le framework React Native e
 
 ### 3. Prérequis
 
-Pour l'installation du projet/application, vous aurez besoin de : 
+Pour l'installation du projet/application, vous aurez besoin de :
 
 - Git <img title="git" src='./images/Git_icon.png' width='20'>
 - NodeJS <img title="nodejs" src='./images/2560px-Node.js_logo.png' width='50'>
@@ -46,11 +46,11 @@ cd studentlink-app-mobile
 
 ### 3. Variables d'environnement
 
-Pour le bon fonctionnement de l'application, il faut une variable d'environnement qu'il vous faudra mettre dans un fichier `.env` , pour cela, le fichier `.env.example`  vous servira de guide.
+Pour le bon fonctionnement de l'application, il faut une variable d'environnement qu'il vous faudra mettre dans un fichier `.env` , pour cela, le fichier `.env.example` vous servira de guide.
 
 ### 4. Installation du projet
 
-Une fois toutes les étapes précédentes effectuées, vous devez télécharger tous les paquets nécessaires au bon fonctionnement de l'application, pour cela, vous pouvez faire cette commande : 
+Une fois toutes les étapes précédentes effectuées, vous devez télécharger tous les paquets nécessaires au bon fonctionnement de l'application, pour cela, vous pouvez faire cette commande :
 
 ```bash
 npm ci
@@ -58,7 +58,13 @@ npm ci
 
 ### 5. Lancement de l'application
 
-Une fois arrivé à cette étape, il vous reste plus qu'une chose à faire. Lancer l'application, pour cela, rien de plus simple, il vous suffit de faire : 
+Une fois arrivé à cette étape, il vous reste plus que deux choses à faire. La première est de vous mettre sur la branche de la release, pour cela :
+
+```bash
+git checkout release/v1.0.0
+```
+
+La seconde est de lancer l'application, pour cela, rien de plus simple, il vous suffit de faire :
 
 ```bash
 npm run start
@@ -67,4 +73,3 @@ npm run start
 ## III. Utilisation de l'application
 
 Une fois le serveur expo lancé, vous n'avez plus cas scanner le **QR code** affiché dans votre terminal pour enfin utiliser l'application.
-
