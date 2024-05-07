@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import getLocalisationName from '../utils/getLocalisationName';
+import { API_URL } from '@env';
 
 const HomePage = () => {
     const [posts, setPosts] = useState<PostType[]>();
@@ -18,7 +19,7 @@ const HomePage = () => {
 
     const getPosts = async () => {
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/feed`, {
+            const response = await fetch(`${API_URL}/feed`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

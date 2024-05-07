@@ -12,6 +12,7 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import CommentType from '../data/customTypes/Comment';
 import { Ionicons } from '@expo/vector-icons/';
 import getLocalisationName from '../utils/getLocalisationName';
+import { API_URL } from '@env';
 
 const PostDetails = () => {
 
@@ -25,7 +26,7 @@ const PostDetails = () => {
 
   const getComments = async () => {
     try {
-      const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/posts/${post.id}/comments`, {
+      const response = await fetch(`${API_URL}/posts/${post.id}/comments`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ const PostDetails = () => {
 
   const addComment = async () => {
     try {
-      const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/comments`, {
+      const response = await fetch(`${API_URL}/comments`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

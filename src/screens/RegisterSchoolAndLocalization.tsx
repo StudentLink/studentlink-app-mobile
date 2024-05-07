@@ -12,6 +12,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 import BackButton from '../components/Button/BackButton';
 import decodeToken from '../utils/decodeToken';
+import { API_URL } from '@env';
 
 const RegisterSchoolAndLocalization = () => {
 
@@ -23,7 +24,7 @@ const RegisterSchoolAndLocalization = () => {
 
     const getSchoolData = async () => {
         try {
-            const response = await fetch('https://studentlink.etudiants.ynov-bordeaux.com/api/schools')
+            const response = await fetch(`${API_URL}/schools`)
             const json = await response.json();
             setSchool(json.map((school: SchoolType) => ({ label: school.name, value: `${school.id}` })))
         } catch (error) {
@@ -35,7 +36,7 @@ const RegisterSchoolAndLocalization = () => {
         const token = decodeToken();
         if (!token) return;
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -8,6 +8,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 import { ValidateDataLogin } from '../utils/verification';
 import BackButton from '../components/Button/BackButton';
+import { API_URL } from '@env';
 
 const Login = () => {
 
@@ -18,7 +19,7 @@ const Login = () => {
 
     const loginUser = async () => {
         try {
-            const response = await fetch('https://studentlink.etudiants.ynov-bordeaux.com/api/login', {
+            const response = await fetch(`${API_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

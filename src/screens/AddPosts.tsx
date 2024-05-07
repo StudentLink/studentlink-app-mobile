@@ -11,6 +11,7 @@ import { CapitalizeData } from '../utils/verification';
 import ButtonShadow from '../components/Button/ButtonShadow';
 import decodeToken from '../utils/decodeToken';
 import { useIsFocused } from '@react-navigation/native';
+import { API_URL } from '@env';
 
 const AddPosts = () => {
 
@@ -29,7 +30,7 @@ const AddPosts = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ const AddPosts = () => {
 
     const addPost = async () => {
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/posts`, {
+            const response = await fetch(`${API_URL}/posts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

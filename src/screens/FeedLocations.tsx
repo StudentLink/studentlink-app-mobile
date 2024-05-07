@@ -9,6 +9,7 @@ import { Colors } from '../utils/colors';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
+import { API_URL } from '@env';
 
 const FeedLocations = () => {
 
@@ -23,7 +24,7 @@ const FeedLocations = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ const FeedLocations = () => {
         if (!user) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/feed/locations`, {
+            const response = await fetch(`${API_URL}/feed/locations`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

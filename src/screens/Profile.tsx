@@ -15,6 +15,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import decodeToken from '../utils/decodeToken';
 import getLocalisationName from '../utils/getLocalisationName';
+import { API_URL } from '@env';
 
 const Profile = () => {
 
@@ -31,7 +32,7 @@ const Profile = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ const Profile = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}/posts`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}/posts`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

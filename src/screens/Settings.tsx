@@ -12,6 +12,7 @@ import User from '../data/customTypes/User';
 import { ValidateDataUpdate } from '../utils/verification';
 import ButtonShadow from '../components/Button/ButtonShadow';
 import decodeToken from '../utils/decodeToken';
+import { API_URL } from '@env';
 
 const Settings = () => {
 
@@ -30,7 +31,7 @@ const Settings = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ const Settings = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

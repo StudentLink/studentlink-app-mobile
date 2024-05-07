@@ -8,6 +8,7 @@ import { formatDate } from '../data/FormatDate';
 import { Colors } from '../utils/colors';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import decodeToken from '../utils/decodeToken';
+import { API_URL } from '@env';
 
 const FeedSchools = () => {
 
@@ -22,7 +23,7 @@ const FeedSchools = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/users/${token.sub}`, {
+            const response = await fetch(`${API_URL}/users/${token.sub}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ const FeedSchools = () => {
         if (!user) return;
 
         try {
-            const response = await fetch(`https://studentlink.etudiants.ynov-bordeaux.com/api/feed/school`, {
+            const response = await fetch(`${API_URL}/feed/school`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

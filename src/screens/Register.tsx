@@ -9,6 +9,7 @@ import { CapitalizeData, ValidateDataRegister } from '../utils/verification';
 import * as SecureStore from 'expo-secure-store'
 import BackButton from '../components/Button/BackButton';
 import { ScrollView } from 'react-native-gesture-handler';
+import { API_URL } from '@env';
 
 const Register = () => {
     const navigation = useNavigation();
@@ -22,7 +23,7 @@ const Register = () => {
 
     const registerUser = async () => {
         try {
-            const response = await fetch('https://studentlink.etudiants.ynov-bordeaux.com/api/users', {
+            const response = await fetch(`${API_URL}/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
