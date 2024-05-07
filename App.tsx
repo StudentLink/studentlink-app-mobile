@@ -17,7 +17,7 @@ const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Authentication'>
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='OnBoarding'>
           <Stack.Screen name="OnBoarding" component={OnBoarding} />
           <Stack.Screen name="Authentication" component={Authentication} />
           <Stack.Screen name="Register" component={Register} />
